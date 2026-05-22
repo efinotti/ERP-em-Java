@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package erpapp.Entity;
+package erpapp.Model;
 
 /**
  *
@@ -10,12 +10,12 @@ package erpapp.Entity;
  */
 public class ItemPedido {
     private int id;
-    private Produto produto;
+    private int id_produto;
     private int quantidade;
 
     public ItemPedido(int id, Produto produto, int quantidade) {
         this.id = id;
-        this.produto = produto;
+        this.id_produto = produto.getId();
         this.quantidade = quantidade;
     }
 
@@ -25,12 +25,12 @@ public class ItemPedido {
     public int getId() {
         return id;
     }
-
+    
     /**
-     * @return the produto
+     * @return the id of the product
      */
-    public Produto getProduto() {
-        return produto;
+    public int getIdProduto() {
+        return id_produto;
     }
 
     /**
@@ -45,13 +45,6 @@ public class ItemPedido {
      */
     public void setId(int id) {
         this.id = id;
-    }
-
-    /**
-     * @param produto the produto to set
-     */
-    public void setProduto(Produto produto) {
-        this.produto = produto;
     }
 
     /**
