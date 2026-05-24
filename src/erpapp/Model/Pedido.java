@@ -13,6 +13,8 @@ import java.util.ArrayList;
 public class Pedido {
     
     private ArrayList<ItemPedido> itensPedido = new ArrayList<>();
+    private ArrayList<Pedido> listaPedido = new ArrayList<>();
+    private final String ARQUIVO = "pedidos.csv";
     private int id;
     private int id_cliente;
 
@@ -29,13 +31,48 @@ public class Pedido {
             id = getItensPedido().getLast().getId() + 1;
         }
         
+        ItemPedido itemPedido = new ItemPedido(id, produto, quantidade);
+        getItensPedido().add(itemPedido);
+    }
+    
+    public void incluir(Pedido p){
+        listaPedido.add(p);
+        armazenar();
+    }
+    
+    public void alterar(){
+        
+    }
+    
+    public void excluir(){
+        
+    }
+    
+    public void consultar(){
+        
+    }
+    
+    public void listar(){
+        
+    }
+    
+    public void armazenar(){
+        try(PrintWriter writer = new PrintWriter(new FileWriter(Arquivo))){
+            for(Pedido p: listaPedido){
+                writer.println(p.getId() + ";" + p.getCliente() + ";" + p.getProduto() + ";" + p.getValor());
+            }
+        }catch(IOException e){
+            System.out.println("Erro ao salvar arquivo:" + e.getMessage());
+        }
+    }
+    
+    public void recuperar(){
+        
+    }
         /* Pensando em POO, basicamente faço uma Composição.
         * Caso o pedido seja destruido, itemPedido eh destruido
         */
-        ItemPedido itemPedido = new ItemPedido(id, produto, quantidade);
-        
-        getItensPedido().add(itemPedido);
-    }
+
 
     /**
      * @return the itensPedido
@@ -49,6 +86,10 @@ public class Pedido {
      */
     public int getId() {
         return id;
+    }
+    
+    public List<Pedido> getListPedido(){
+        return listaPedido;
     }
 
     /**
