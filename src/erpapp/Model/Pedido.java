@@ -44,8 +44,9 @@ public class Pedido {
         
     }
     
-    public void excluir(){
-        
+    public void excluir(Pedido p){
+        listaPedido.remove(p);
+        armazenar();
     }
     
     public void consultar(){
@@ -53,11 +54,17 @@ public class Pedido {
     }
     
     public void listar(){
-        
+        if(listaPedido.isEmpty()){
+            System.out.println("Não há pedidos.");
+        }else{
+            for(Pedido p: listaPedido){
+                listModel.addElement(p);
+            }
+        }
     }
     
     public void armazenar(){
-        try(PrintWriter writer = new PrintWriter(new FileWriter(Arquivo))){
+        try(PrintWriter writer = new PrintWriter(new FileWriter(ARQUIVO))){
             for(Pedido p: listaPedido){
                 writer.println(p.getId() + ";" + p.getCliente() + ";" + p.getProduto() + ";" + p.getValor());
             }
@@ -67,8 +74,25 @@ public class Pedido {
     }
     
     public void recuperar(){
+        File file = new File(ARQUIVO);
+        if(!file.exists()){ return;
+        }
         
+        try(BufferedReader reader = new BufferedReader(new FileReader(file))){
+            String linha;
+            while((linha = reader.readLine()) != null){
+                String[] dados = linha.split(";");
+                if(dados.length == 4){
+                    int numero = Integer.parseInt(dados[0]);
+                    double valor = Double.parseDouble(dados[3]);
+                    listaPedido.add(new Pedido(numero,dados[1],dados[2],valor));
+                }
+            }
+        }catch(IOException | NumberFormaException e){
+            System.out.println("Erro ao recuperar os dados:" + e.getMessage());
+        }
     }
+
         /* Pensando em POO, basicamente faço uma Composição.
         * Caso o pedido seja destruido, itemPedido eh destruido
         */
