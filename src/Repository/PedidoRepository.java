@@ -4,6 +4,8 @@
  */
 package Repository;
 
+import erpapp.Model.Pedido;
+
 /**
  *
  * @author enzo
@@ -11,3 +13,5 @@ package Repository;
 public class PedidoRepository {
     
 }
+
+

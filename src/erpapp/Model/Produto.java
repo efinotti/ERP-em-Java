@@ -3,8 +3,9 @@ package erpapp.Model;
 public class Produto {
     private int id;
     private String nome;
+    private float preco;
     private int quantidade;
-
+    
     /**
      * @return the id
      */
@@ -18,7 +19,10 @@ public class Produto {
     public String getNome() {
         return nome;
     }
-
+    
+    public float getPreco(){
+        return preco;
+    }
     /**
      * @return the quantidade
      */
@@ -39,7 +43,15 @@ public class Produto {
     public void setNome(String nome) {
         this.nome = nome;
     }
-
+    
+    public void setPreco(float preco){
+        this.preco = preco;
+    }
+    
+    public void setQuantia(int quantidade){
+        this.quantidade = quantidade;
+    }
+    
     /**
      * @param quantidade the quantidade to set
      */
