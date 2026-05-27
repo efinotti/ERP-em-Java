@@ -23,12 +23,11 @@ public class Pedido {
     private Date dt_entrega = new Date();
     private float vlr_total;
 
-    public Pedido(int id, Cliente cliente,Date dt_pedido, Date dt_entrega, float vlr_total) {
+    public Pedido(int id, Cliente cliente,Date dt_pedido, Date dt_entrega) {
         this.id = id;
         this.id_cliente = cliente.getId();
         this.dt_pedido = dt_pedido;
         this.dt_entrega = dt_entrega;
-        this.vlr_total = vlr_total;
     }
     
     public void adicionarItemPedido (Produto produto, int quantidade) {

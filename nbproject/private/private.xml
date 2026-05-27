@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/home/enzo/NetBeansProjects/ERPApp/src/erpapp/Model/Cliente.java</file>
+            <file>file:/home/enzo/NetBeansProjects/ERPApp/src/erpapp/ERPApp.java</file>
+            <file>file:/home/enzo/NetBeansProjects/ERPApp/src/erpapp/Model/Produto.java</file>
+            <file>file:/home/enzo/NetBeansProjects/ERPApp/src/erpapp/Model/Pedido.java</file>
+            <file>file:/home/enzo/NetBeansProjects/ERPApp/src/erpapp/Model/ItemPedido.java</file>
+            <file>file:/home/enzo/NetBeansProjects/ERPApp/src/Controller/ProdutoControlller.java</file>
+            <file>file:/home/enzo/NetBeansProjects/ERPApp/src/Controller/ClienteController.java</file>
+            <file>file:/home/enzo/NetBeansProjects/ERPApp/src/Repository/ClienteRepository.java</file>
+            <file>file:/home/enzo/NetBeansProjects/ERPApp/src/Repository/ProdutoRepository.java</file>
+            <file>file:/home/enzo/NetBeansProjects/ERPApp/src/Repository/PedidoRepository.java</file>
+            <file>file:/home/enzo/NetBeansProjects/ERPApp/src/Util/ArquivoUtil.java</file>
+            <file>file:/home/enzo/NetBeansProjects/ERPApp/src/Repository/ItemPedidoRepository.java</file>
+        </group>
+    </open-files>
+</project-private>
