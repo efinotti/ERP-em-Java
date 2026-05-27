@@ -16,7 +16,7 @@ public class Pedido {
     
     private ArrayList<ItemPedido> itensPedido = new ArrayList<>();
     private ArrayList<Pedido> listaPedido = new ArrayList<>();
-    private final String ARQUIVO = "pedidos.csv";
+    private final String arquivo = "pedidos.csv";
     private int id;
     private int id_cliente;
     private Date dt_pedido = new Date();
@@ -44,22 +44,46 @@ public class Pedido {
     }
     public void incluir(Pedido p){
         listaPedido.add(p);
-        armazenar(); // Está função está lá no repositório de pedido
+        armazenar();
     }
     
-    public void alterar(){
-        
+    public void alterar(Produto produto){
+        Pedido selecionado = view.getListPedido().getSelectedValue();
+        if(selecionado != null){
+            DetalhePedido dialog = new DetalhePedido(view, true);
+            dialog.getTxt
+        }
     }
     
     public void excluir(Pedido p){
         listaPedido.remove(p);
-        armazenar(); /* Esta função está lá no Util Arquivo
-                    visto que a opção de salvarDados se encontra naquele package
-                    */       
+        armazenar();      
     }
     
     public void consultar(){
-       
+       String termo = JOptionPane.showInputDialog(view,"Digite o ID para buscar o pedido...");
+       if(termo != null && !termo.trim().isEmpty()){
+           try{
+               int IdBusca = Integer.parseInt(termo.trim());
+               listModel.clear();
+               boolean encontrado = false;
+               
+               for(Pedido p : model.getListPedido()){
+                 if(p.getId() == IdBusca){
+                     listModel.addElement(p);
+                     encontrado = true;
+                     break;
+                 }
+           }
+               if(!encontrado){
+                   JOptionPane.showMessageDialog(view,"Pedido com o ID: " + IdBusca + " não foi encontrado.");
+               }
+           }catch(NumberFormatExcpetion e){
+               JOptionPane.showMessageDialog(view, "Erro: Digite apenas números válidos para o ID." + "Erro de Digitação: " + JOptionPane.ERROR_MESSAGE);
+           }
+       }else{
+           return;
+       }
     }
     
     public void listar(){
