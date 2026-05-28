@@ -4,12 +4,15 @@
  */
 package Util;
 
-import erpapp.Model.Pedido;
+import erpapp.Model.Pedido.*;
 
 /**
  *
  * @author enzo
- */
+ *
+ 
+ /*
+ 
 public class ArquivoUtil {
     
 }
@@ -43,3 +46,5 @@ public class ArquivoUtil {
             System.out.println("Erro ao recuperar os dados:" + e.getMessage());
         }
     }
+
+*/

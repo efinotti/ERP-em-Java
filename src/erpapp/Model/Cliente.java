@@ -9,6 +9,7 @@ import java.text.SimpleDateFormat;
 import java.time.Instant;
 import java.util.ArrayList;
 import java.util.Date;
+import Util.ValiadorUtil;
 
 
 /**
@@ -18,11 +19,19 @@ import java.util.Date;
 public class Cliente {
     private int id;
     private String nome;
+    private String cpf;
     private ArrayList<Pedido> pedidos = new ArrayList<>();
 
-    public Cliente(int id, String nome) {
+    public Cliente(int id, String nome, String cpf) {
         this.id = id;
         this.nome = nome;
+        try{
+           setCPF(cpf);
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        
+        
     }
     
     public void adicionarPedidos() {
@@ -31,74 +40,26 @@ public class Cliente {
         if (pedidos.isEmpty()) {
             id_pedido = 1;
         } else {
-            id_pedido = pedidos.getLast().getId();
-        }
+            id_pedido = pedidos.getLast().getId() + 1;
+        } // Adiciona PRIMARY KEY (ID) PARA O PEDIDO
         
-        Date dataHoje = Date.from(Instant.now());
-        SimpleDateFormat format =   new SimpleDateFormat("dd");
+        Pedido pedido = new Pedido(id_pedido, this); // Instancia o PEDIDO com o ID dele
+        pedidos.add(pedido);
         
-        try {
-            Date prazoEntrega = format.parse("15");
-            Date dataEntrega = new Date(dataHoje.getTime() + prazoEntrega.getTime());
-            
-            Pedido pedido = new Pedido(id_pedido, this, dataHoje, dataEntrega);
-            pedidos.add(pedido);
-            
-            
-        } catch (ParseException e){
-            System.out.println("Deu erro na hora de transformar em horas: " +  e);
-        }
-       
     }
     
-    public boolean validadorCPF (String cpf) throws Exception {
-        if (cpf.length() != 11) {
-            int soma = 0;
-            int j, i;
-            int primeiroDigitoVerificador;
-            int segundoDigitoVerificador;
-            boolean todosIguais = true;
-            
-            for (i = 0; i < 11; i++){
-                if (cpf.charAt(i) < '0' || cpf.charAt(i) > '9') {
-                    throw new Exception ("Valores fora do limeite!");
-                }
+   /* 
+    
+    public Cliente verificarClienteExiste(ArrayList<Cliente> clientes, String cpf) throws NullPointerException {
+        for (Cliente cliente: clientes){
+            if (cliente.getCPF().equals(cpf)){
+                return cliente;
             }
-            
-            for (i = 1; i < 11; i++) {
-                if (cpf.charAt(i) !=  cpf.charAt(i)) {
-                    todosIguais = false;
-                }
-            }
-            
-            if (todosIguais) {
-                throw new Exception ("Todos os caracteres iguais");
-            }
-            
-            j = 10;
-            
-            for (i = 0; i < 9; i++) soma += (cpf.charAt(i) - '0') * j--;
-            
-            int modSum1 = soma % 11;
-            
-            primeiroDigitoVerificador = (modSum1 < 2) ? 0 : 11 - modSum1;
-            
-            soma = 0;
-            j = 11;
-            
-            for (i = 0; i < 10; i++) soma += (cpf.charAt(i) - '0') * j--;
-            int modSum2 = soma % 11;
-            
-            segundoDigitoVerificador = (modSum2 < 2) ? 0 : 11 - modSum2;
-           
-            
-            return (primeiroDigitoVerificador == (cpf.charAt(9) - '0') &&
-            segundoDigitoVerificador == (cpf.charAt(10) - '0'));
-            
-        } else {
-            throw new Exception("Erro!!! CPF tem menos/mais de 11 digitos.\n");
         }
+        
+        throw new NullPointerException("CPF nao encontrado!");
     }
+    */
 
     /**
      * @return the id
@@ -113,12 +74,24 @@ public class Cliente {
     public String getNome() {
         return nome;
     }
+    
+    public String getCPF() {
+        return cpf;
+    }
 
     /**
      * @param id the id to set
      */
     public void setId(int id) {
         this.id = id;
+    }
+    
+    public void setCPF (String cpf) throws Exception {
+        if (ValiadorUtil.validadorCPF(cpf)) {
+            this.cpf = cpf;
+        } else {
+            throw new Exception("CPF inválido! Impossivel criar o Cliente");
+        }
     }
 
     /**

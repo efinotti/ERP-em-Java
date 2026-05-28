@@ -1,9 +1,13 @@
 package erpapp;
 
+import javax.swing.SwingUtilities;
+
 public class ERPApp {
 
     public static void main(String[] args) {
-        SwingUtilities.invokeLater(())->{
+        SwingUtilities.invokeLater(() -> {
+        
+        });
         /* Aqui eu to achando que vamos ter que criar uma View de um Menu
         Principal, e que ao escolher uma opção (ex: Pedido) ele invoka a View 
         correspondente.
@@ -11,6 +15,5 @@ public class ERPApp {
         exemplificar o que to falando
         */
     }
-    }
-    
 }
+   

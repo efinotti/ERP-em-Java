@@ -6,7 +6,9 @@ package erpapp.Model;
 
 import java.util.ArrayList;
 import java.util.Date;
-import ERPApp.Repository.PedidoRepository;
+
+/*
+import Util.ArquivoUtil;
 
 /**
  *
@@ -23,11 +25,9 @@ public class Pedido {
     private Date dt_entrega = new Date();
     private float vlr_total;
 
-    public Pedido(int id, Cliente cliente,Date dt_pedido, Date dt_entrega) {
+    public Pedido(int id, Cliente cliente) {
         this.id = id;
         this.id_cliente = cliente.getId();
-        this.dt_pedido = dt_pedido;
-        this.dt_entrega = dt_entrega;
     }
     
     public void adicionarItemPedido (Produto produto, int quantidade) {
@@ -38,12 +38,12 @@ public class Pedido {
             id = getItensPedido().getLast().getId() + 1;
         }
         
-        ItemPedido itemPedido = new ItemPedido(id, produto, quantidade);
-        getItensPedido().add(itemPedido);
+        // ItemPedido itemPedido = new ItemPedido(id, produto, quantidade);
+        // getItensPedido().add(itemPedido);
     }
     public void incluir(Pedido p){
         listaPedido.add(p);
-        armazenar(); // Está função está lá no repositório de pedido
+        // armazenar(); // Está função está lá no repositório de pedido
     }
     
     public void alterar(){
@@ -52,7 +52,7 @@ public class Pedido {
     
     public void excluir(Pedido p){
         listaPedido.remove(p);
-        armazenar(); /* Esta função está lá no Util Arquivo
+        /*armazenar(); /* Esta função está lá no Util Arquivo
                     visto que a opção de salvarDados se encontra naquele package
                     */       
     }
@@ -66,7 +66,7 @@ public class Pedido {
             System.out.println("Não há pedidos.");
         }else{
             for(Pedido p: listaPedido){
-                listModel.addElement(p); // listModel está lá no controller
+                // listModel.addElement(p); // listModel está lá no controller
             }
         }
     }
@@ -90,9 +90,9 @@ public class Pedido {
     }
     
     
-    public List<Pedido> getListPedido(){
+    /*public List<Pedido> getListPedido(){
         return listaPedido;
-    }
+    } */
 
     /**
      * @return the id_cliente
