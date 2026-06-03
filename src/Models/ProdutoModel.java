@@ -8,11 +8,22 @@ public class Produto {
     private float preco;
     private int quantidade;
     private ArrayList<Produto> listaProduto = new ArrayList<>();
+    private final String arquivo = "produtos.csv";
+   
+    public Produto(){
+        ArquivoUtil.recuperar(listaProduto);
+    }
     
+    public Produto(int id, String nome, float preco, int quantidade){
+        this.id = id;
+        this.nome = nome;
+        this.preco = preco;
+        this.quantidade = quantidade;
+    }
     
     public void incluir(Produto p){
         listaProduto.add(p);
-        armazenar();
+        ArquivoUtil.armazenar(listaProduto);
     }
     
     public void consultar(){
@@ -32,17 +43,32 @@ public class Produto {
         }
     }
     
-    public void listar(){
-        
+       public void listar(){
+        if(listaProduto.isEmpty()){
+            System.out.println("Não há produtos.");
+        }else{
+            for(Pedido p: listaProduto){
+                listModel.addElement(p); // listModel está lá no controller
+            }
+        }
     }
     
-    public void alterar(){
-        
+    public void alterar(Produto produtoAtualizado){
+        for (Produto pOriginal : listaProduto) {
+            if (pOriginal.getId() == produtoAtualizado.getId()) {
+                pOriginal.setNome(produtoAtualizado.getNome());
+                pOriginal.setPreco(produtoAtualizado.getPreco());
+                pOriginal.setQuantia(produtoAtualizado.getQuantidade());
+                
+                ArquivoUtil.armazenar(listaProduto);
+                return;
+            }
+        }
     }
     
     public void remover(Produto p){
-        listaProduto.remove(p);
-        armazenar();
+        listaProduto.removeIf(produto -> produto.getId() == p.getId());
+        ArquivoUtil.armazenar(listaProduto);
     }
     /**
      * @return the id
@@ -93,12 +119,5 @@ public class Produto {
     /**
      * @param quantidade the quantidade to set
      */
-    public void manterEstoque(int valor, boolean remover) {
-        if (remover) {
-            
-        } else {
-            
-        }
-    }
     
 }

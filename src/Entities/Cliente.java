@@ -2,9 +2,16 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package erpapp.Model;
+package Entities;
 
+import Models.PedidoModel;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.Instant;
 import java.util.ArrayList;
+import java.util.Date;
+import Util.ValiadorUtil;
+
 
 /**
  *
@@ -13,25 +20,20 @@ import java.util.ArrayList;
 public class Cliente {
     private int id;
     private String nome;
+    private String cpf;
     private ArrayList<Pedido> pedidos = new ArrayList<>();
 
-    public Cliente(int id, String nome) {
+    public Cliente(int id, String nome, String cpf) {
         this.id = id;
         this.nome = nome;
+        try{
+           setCPF(cpf);
+        } catch (Exception e) {
+            System.out.println(e);
+        }   
     }
     
-    public void adicionarPedidos() {
-        int id_pedido;
-        
-        if (pedidos.isEmpty()) {
-            id_pedido = 1;
-        } else {
-            id_pedido = pedidos.getLast().getId();
-        }
-        
-        Pedido pedido = new Pedido(id_pedido, this);
-        pedidos.add(pedido);
-    }
+   
 
     /**
      * @return the id
@@ -46,12 +48,24 @@ public class Cliente {
     public String getNome() {
         return nome;
     }
+    
+    public String getCPF() {
+        return cpf;
+    }
 
     /**
      * @param id the id to set
      */
     public void setId(int id) {
         this.id = id;
+    }
+    
+    public void setCPF (String cpf) throws Exception {
+        if (ValiadorUtil.validadorCPF(cpf)) {
+            this.cpf = cpf;
+        } else {
+            throw new Exception("CPF inválido! Impossivel criar o Cliente");
+        }
     }
 
     /**
