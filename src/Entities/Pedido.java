@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package erpapp.Model;
+package Entities;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -25,7 +25,7 @@ public class Pedido {
     private Date dt_entrega = new Date();
     private float vlr_total;
 
-    public Pedido(int id, Cliente cliente) {
+    public Pedido(int id, Cliente cliente, Produto produto) {
         this.id = id;
         this.id_cliente = cliente.getId();
     }

@@ -2,8 +2,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package erpapp.Model;
+package Entities;
 
+import Models.PedidoModel;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.Instant;
@@ -29,37 +30,10 @@ public class Cliente {
            setCPF(cpf);
         } catch (Exception e) {
             System.out.println(e);
-        }
-        
-        
+        }   
     }
     
-    public void adicionarPedidos() {
-        int id_pedido;
-        
-        if (pedidos.isEmpty()) {
-            id_pedido = 1;
-        } else {
-            id_pedido = pedidos.getLast().getId() + 1;
-        } // Adiciona PRIMARY KEY (ID) PARA O PEDIDO
-        
-        Pedido pedido = new Pedido(id_pedido, this); // Instancia o PEDIDO com o ID dele
-        pedidos.add(pedido);
-        
-    }
-    
-   /* 
-    
-    public Cliente verificarClienteExiste(ArrayList<Cliente> clientes, String cpf) throws NullPointerException {
-        for (Cliente cliente: clientes){
-            if (cliente.getCPF().equals(cpf)){
-                return cliente;
-            }
-        }
-        
-        throw new NullPointerException("CPF nao encontrado!");
-    }
-    */
+   
 
     /**
      * @return the id

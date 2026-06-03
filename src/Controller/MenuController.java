@@ -4,12 +4,23 @@
  */
 package Controller;
 
-import Entities.Cliente;
-import javax.swing.DefaultListModel;
+
+import Models.EPRModel;
+import View.MenuView;
 
 /**
  *
  * @author enzo
  */
-public class ClienteController {
+public class MenuController {
+    EPRModel model;
+    MenuView view;
+
+    public MenuController(EPRModel model, MenuView view) {
+        this.model = model;
+        this.view = view;
+    }
+    
+    
+    
 }

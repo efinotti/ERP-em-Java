@@ -1,6 +1,8 @@
-package erpapp.Model;
+package Models;
 
-public class Produto {
+import Entities.*;
+
+public class ProdutoModel {
     private int id;
     private String nome;
     private float preco;

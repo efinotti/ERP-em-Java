@@ -4,7 +4,7 @@
  */
 package Util;
 
-import erpapp.Model.Pedido.*;
+import Entities.Pedido.*;
 
 /**
  *

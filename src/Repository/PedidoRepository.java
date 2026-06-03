@@ -4,7 +4,7 @@
  */
 package Repository;
 
-import erpapp.Model.Pedido;
+import Entities.Pedido;
 
 /**
  *
