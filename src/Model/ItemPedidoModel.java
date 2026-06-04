@@ -13,7 +13,7 @@ public class ItemPedidoModel {
     private float preco_uni;
     private float preco_total;
 
-    public ItemPedidoModel(PedidoModel pedido, int id, ProdutoModel produto, int quantidade) {
+    public ItemPedidoModel(int id, int id_pedido, int id_produto, int quantidade) {
         this.pedido = pedido;
         this.produto = produto;
         this.id = id;
@@ -32,9 +32,6 @@ public class ItemPedidoModel {
     }
         
     
-    /**
-     * @param id the id to set
-     */
     public void setId(int id) {
         this.id = id;
     }
@@ -43,9 +40,6 @@ public class ItemPedidoModel {
         return preco_total;
     }
 
-    /**
-     * @param quantidade the quantidade to set
-     */
     public void setQuantidade(int quantidade) {
         this.quantidade = quantidade;
     }
@@ -69,7 +63,8 @@ public class ItemPedidoModel {
     
     @Override
     public String toString() {
-        return String.format("%d;%d;%d;%d;%f\n", id, id_pedido, id_produto, quantidade, preco_total); 
+        
+        return String.format("%d;%d;%d;%d", id, id_pedido, id_produto, quantidade); 
     }
     
     

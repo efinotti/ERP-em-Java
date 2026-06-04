@@ -6,10 +6,21 @@ import javax.swing.DefaultListModel;
 
 public class ClienteRepository {
     
-    private DefaultListModel<ClienteModel> clientes = new DefaultListModel<>();
+    private DefaultListModel<ClienteModel> clientes;
     private final String ARQUIVO = "clientes.csv";
     
     private final ArquivoUtil arquivoUtil = new ArquivoUtil();
+
+    public ClienteRepository() {
+        DefaultListModel<?> listaGenerica = ArquivoUtil.ler(1);
+        
+        if (listaGenerica != null) {
+            this.clientes = (DefaultListModel<ClienteModel>) listaGenerica;
+        } else {
+            this.clientes = new DefaultListModel<>();
+        }
+    }
+    
     
     public void criarCliente(String nome, String cpf) {
         try {

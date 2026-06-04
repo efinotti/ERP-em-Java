@@ -1,5 +1,6 @@
 package Model;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -22,10 +23,20 @@ public class PedidoModel {
         this.vlr_total = 0.0f;
     }
     
+    public PedidoModel(int id, int id_cliente, Date dt_pedido, Date dt_entrega, float vlr_total){
+        this.id = id;
+        this.id_cliente = id_cliente;
+        this.dt_entrega = dt_entrega;
+        this.dt_pedido = dt_pedido;
+        this.vlr_total = vlr_total;
+    }
+    
     public void adicionarItemPedido(ProdutoModel produto, int quantidade) {
         int novoId = itensPedido.isEmpty() ? 1 : itensPedido.get(itensPedido.size() - 1).getId() + 1;
         
-        ItemPedidoModel novoItem = new ItemPedidoModel(this, novoId, produto, quantidade);
+        int id_produto = produto.getId();
+        
+        ItemPedidoModel novoItem = new ItemPedidoModel(novoId, this.id, id_produto, quantidade);
         itensPedido.add(novoItem);
         calcularValorTotal();
     }
@@ -89,6 +100,7 @@ public class PedidoModel {
     
     @Override
     public String toString() {
-        return id + ";" + id_cliente + ";" + dt_pedido.getTime() + ";" + dt_entrega.getTime() + ";" + vlr_total; 
+        SimpleDateFormat sdf = new java.text.SimpleDateFormat("yyyy-MM-dd");
+        return String.format("%d;%d;%s;%s;%.2f", id,  id_cliente, sdf.format(dt_pedido), sdf.format(dt_entrega), vlr_total);
     }
 }

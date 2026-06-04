@@ -22,7 +22,6 @@ public class ClienteModel {
     private int id;
     private String nome;
     private String cpf;
-    private ArrayList<PedidoModel> pedidos = new ArrayList<>();
 
     public ClienteModel(int id, String nome, String cpf) {
         this.id = id;
@@ -71,5 +70,10 @@ public class ClienteModel {
 
     public void setNome(String nome) {
         this.nome = nome;
+    }
+    
+    @Override
+    public String toString() {
+        return String.format("%d;%s;%s", id, nome, cpf);
     }
 }

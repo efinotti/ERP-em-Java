@@ -11,7 +11,13 @@ public class PedidoRepository {
     private final String ARQUIVO = "pedidos.csv";
 
     public PedidoRepository() {
-        this.listaPedidos = new DefaultListModel<>();
+        DefaultListModel<?> listaGenerica = ArquivoUtil.ler(4);
+        
+        if (listaGenerica != null) {
+            listaPedidos = (DefaultListModel<PedidoModel>) listaGenerica;
+        } else {
+            listaPedidos = new DefaultListModel<>();
+        }
     }
 
     public void incluir(ClienteModel cliente) {

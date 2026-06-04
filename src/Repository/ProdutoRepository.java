@@ -7,9 +7,16 @@ import javax.swing.DefaultListModel;
 public class ProdutoRepository {
 
     private DefaultListModel<ProdutoModel> listaProdutos;
+    private String ARQUIVO = "produtos.csv";
 
     public ProdutoRepository() {
-        // listaProdutos = new
+        DefaultListModel<?> listaGenerica = ArquivoUtil.ler(2);
+        
+        if (listaGenerica != null) {
+            listaProdutos = (DefaultListModel<ProdutoModel>) listaGenerica;
+        } else {
+            listaProdutos = new DefaultListModel<>();
+        }
     }
 
     public void incluir(ProdutoModel produto) {
