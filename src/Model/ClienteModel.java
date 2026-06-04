@@ -10,7 +10,7 @@ import java.text.SimpleDateFormat;
 import java.time.Instant;
 import java.util.ArrayList;
 import java.util.Date;
-import Util.ValiadorUtil;
+import Util.ValidadorUtil;
 import Repository.ClienteRepository.*;
 
 
@@ -62,7 +62,7 @@ public class ClienteModel {
     }
     
     public void setCPF (String cpf) throws Exception {
-        if (ValiadorUtil.validadorCPF(cpf)) {
+        if (ValidadorUtil.validadorCPF(cpf)) {
             this.cpf = cpf;
         } else {
             throw new Exception("CPF inválido! Impossivel criar o Cliente");

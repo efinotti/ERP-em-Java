@@ -1,10 +1,16 @@
 package Model;
 
 public class ProdutoModel {
+
+    float getPreco() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+public class Produto {
     private int id;
     private String nome;
     private float preco;
-    private int quantidade;
+    private int quantidade;    
     
     /**
      * @return the id
@@ -67,5 +73,6 @@ public class ProdutoModel {
     public String toString() {
         return String.format("%d;%s;%f;%d", id, nome, preco, quantidade); 
     }
+  }
     
 }
