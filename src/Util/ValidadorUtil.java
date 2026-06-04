@@ -8,6 +8,6 @@ package Util;
  *
  * @author enzo
  */
-public class ValiadorUtil {
+public class ValidadorUtil {
     
 }
