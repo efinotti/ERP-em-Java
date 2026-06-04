@@ -21,7 +21,7 @@ public class ArquivoUtil {
             if (file.createNewFile()){
                 System.out.println("Arquivo criado");
             } else {
-                System.out.println("Arquivo ja existe");
+                System.out.println("Arquivo " + nomeArquivo + " ja existe");
             }
             
             FileWriter fw = new FileWriter(file);

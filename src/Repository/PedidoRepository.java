@@ -28,6 +28,15 @@ public class PedidoRepository {
 
         salvarNoArquivo();
     }
+    
+    public void listar() {
+        if (listaPedidos.getSize() <= 0) {
+            System.out.println("Lista pedido está vazia");
+        }
+        for (int i = 0; i < listaPedidos.getSize(); i++) {
+            System.out.println(listaPedidos.get(i).toString() + "\n");
+        }
+    }
 
     public PedidoModel consultarPorId(int idBusca) {
         for (int i = 0; i < listaPedidos.size(); i++) {
@@ -56,5 +65,9 @@ public class PedidoRepository {
 
     public DefaultListModel<PedidoModel> getListaPedidos() {
         return listaPedidos;
+    }
+    
+    public void salvar() {
+        ArquivoUtil.armazenar(ARQUIVO, listaPedidos);
     }
 }

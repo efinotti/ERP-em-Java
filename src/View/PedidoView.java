@@ -9,6 +9,111 @@ package View;
  * @author GabrielPradoMenezes
  */
 public class PedidoView extends javax.swing.JFrame {
+
+    /**
+     * @return the logger
+     */
+    public static java.util.logging.Logger getLogger() {
+        return logger;
+    }
+
+    /**
+     * @return the AlterarBtn
+     */
+    public javax.swing.JButton getAlterarBtn() {
+        return AlterarBtn;
+    }
+
+    /**
+     * @param AlterarBtn the AlterarBtn to set
+     */
+    public void setAlterarBtn(javax.swing.JButton AlterarBtn) {
+        this.AlterarBtn = AlterarBtn;
+    }
+
+    /**
+     * @return the ExcluirBtn
+     */
+    public javax.swing.JButton getExcluirBtn() {
+        return ExcluirBtn;
+    }
+
+    /**
+     * @param ExcluirBtn the ExcluirBtn to set
+     */
+    public void setExcluirBtn(javax.swing.JButton ExcluirBtn) {
+        this.ExcluirBtn = ExcluirBtn;
+    }
+
+    /**
+     * @return the InserirBtn
+     */
+    public javax.swing.JButton getInserirBtn() {
+        return InserirBtn;
+    }
+
+    /**
+     * @param InserirBtn the InserirBtn to set
+     */
+    public void setInserirBtn(javax.swing.JButton InserirBtn) {
+        this.InserirBtn = InserirBtn;
+    }
+
+    /**
+     * @return the jLabel1
+     */
+    public javax.swing.JLabel getjLabel1() {
+        return jLabel1;
+    }
+
+    /**
+     * @param jLabel1 the jLabel1 to set
+     */
+    public void setjLabel1(javax.swing.JLabel jLabel1) {
+        this.jLabel1 = jLabel1;
+    }
+
+    /**
+     * @return the jLabel2
+     */
+    public javax.swing.JLabel getjLabel2() {
+        return jLabel2;
+    }
+
+    /**
+     * @param jLabel2 the jLabel2 to set
+     */
+    public void setjLabel2(javax.swing.JLabel jLabel2) {
+        this.jLabel2 = jLabel2;
+    }
+
+    /**
+     * @return the jList1
+     */
+    public javax.swing.JList<String> getjList1() {
+        return jList1;
+    }
+
+    /**
+     * @param jList1 the jList1 to set
+     */
+    public void setjList1(javax.swing.JList<String> jList1) {
+        this.jList1 = jList1;
+    }
+
+    /**
+     * @return the jScrollPane1
+     */
+    public javax.swing.JScrollPane getjScrollPane1() {
+        return jScrollPane1;
+    }
+
+    /**
+     * @param jScrollPane1 the jScrollPane1 to set
+     */
+    public void setjScrollPane1(javax.swing.JScrollPane jScrollPane1) {
+        this.jScrollPane1 = jScrollPane1;
+    }
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(PedidoView.class.getName());
 
@@ -118,7 +223,7 @@ public class PedidoView extends javax.swing.JFrame {
                 }
             }
         } catch (ReflectiveOperationException | javax.swing.UnsupportedLookAndFeelException ex) {
-            logger.log(java.util.logging.Level.SEVERE, null, ex);
+            getLogger().log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 

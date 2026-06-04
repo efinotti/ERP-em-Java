@@ -26,7 +26,7 @@ public class ItemPedidoRepository {
         listaItemPedido.addElement(itemPedido);
     }
     
-    public void salvarNoArquivo() {
+    public void salvar() {
         ArquivoUtil.armazenar(ARQUIVO, listaItemPedido);
     }
     
