@@ -4,8 +4,6 @@
  */
 package Controller;
 
-
-import Repository.EPRRepository;
 import View.MenuView;
 
 /**
@@ -13,11 +11,9 @@ import View.MenuView;
  * @author enzo
  */
 public class MenuController {
-    EPRRepository model;
     MenuView view;
 
-    public MenuController(EPRRepository model, MenuView view) {
-        this.model = model;
+    public MenuController(MenuView view) {
         this.view = view;
     }
     

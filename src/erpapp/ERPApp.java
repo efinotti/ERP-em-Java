@@ -4,8 +4,8 @@ import Controller.MenuController;
 import Controller.PedidoController;
 import javax.swing.SwingUtilities;
 
-import Repository.EPRRepository;
 import Repository.PedidoRepository;
+import Repository.ProdutoRepository;
 import View.MenuView;
 import View.PedidoView;
 
@@ -16,8 +16,9 @@ public class ERPApp {
             
             PedidoView view = new PedidoView();
             PedidoRepository repository = new PedidoRepository();
+            ProdutoRepository produtoRepository = new ProdutoRepository();
             
-            PedidoController controller = new PedidoController(repository, view);
+            PedidoController controller = new PedidoController(repository, view, produtoRepository);
             
         });
         /* Aqui eu to achando que vamos ter que criar uma View de um Menu

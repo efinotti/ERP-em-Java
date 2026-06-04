@@ -5,7 +5,12 @@
         <group>
             <file>file:/home/enzoo/NetBeansProjects/ERP-em-Java/src/Controller/PedidoController.java</file>
             <file>file:/home/enzoo/NetBeansProjects/ERP-em-Java/src/Repository/PedidoRepository.java</file>
-            <file>file:/home/enzoo/NetBeansProjects/ERP-em-Java/src/Repository/ItemPedidoRepository.java</file>
+            <file>file:/home/enzoo/NetBeansProjects/ERP-em-Java/src/View/DetalhePedidoView.java</file>
+            <file>file:/home/enzoo/NetBeansProjects/ERP-em-Java/src/TableModel/PedidoTableModel.java</file>
+            <file>file:/home/enzoo/NetBeansProjects/ERP-em-Java/src/View/ConfirmarPedidoView.java</file>
+            <file>file:/home/enzoo/NetBeansProjects/ERP-em-Java/src/View/PedidoView.java</file>
+            <file>file:/home/enzoo/NetBeansProjects/ERP-em-Java/src/View/AdicionarItemPedidoView.java</file>
+            <file>file:/home/enzoo/NetBeansProjects/ERP-em-Java/src/View/ClienteView.java</file>
         </group>
     </open-files>
 </project-private>

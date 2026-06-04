@@ -6,6 +6,22 @@ import javax.swing.DefaultListModel;
 
 public class ProdutoRepository {
 
+    public DefaultListModel<ProdutoModel> getListaProdutos() {
+        return listaProdutos;
+    }
+
+    public void setListaProdutos(DefaultListModel<ProdutoModel> listaProdutos) {
+        this.listaProdutos = listaProdutos;
+    }
+
+    public String getARQUIVO() {
+        return ARQUIVO;
+    }
+
+    public void setARQUIVO(String ARQUIVO) {
+        this.ARQUIVO = ARQUIVO;
+    }
+
     private DefaultListModel<ProdutoModel> listaProdutos;
     private String ARQUIVO = "produtos.csv";
 
@@ -20,22 +36,22 @@ public class ProdutoRepository {
     }
 
     public void incluir(ProdutoModel produto) {
-        listaProdutos.addElement(produto);
+        getListaProdutos().addElement(produto);
     }
 
     public DefaultListModel<ProdutoModel> listar() {
-        return listaProdutos;
+        return getListaProdutos();
     }
 
     public DefaultListModel<ProdutoModel> consultarPorNome(String termo) {
         DefaultListModel<ProdutoModel> filtrados = new DefaultListModel<>();
 
         if (termo == null || termo.trim().isEmpty()) {
-            return listaProdutos;
+            return getListaProdutos();
         }
 
-        for (int i = 0; i < listaProdutos.size(); i++) {
-            ProdutoModel p = listaProdutos.getElementAt(i);
+        for (int i = 0; i < getListaProdutos().size(); i++) {
+            ProdutoModel p = getListaProdutos().getElementAt(i);
 
             if (p.getNome().toLowerCase().contains(termo.toLowerCase())) {
                 filtrados.addElement(p);
@@ -46,8 +62,8 @@ public class ProdutoRepository {
     }
 
     public ProdutoModel consultarPorId(int idBusca) {
-        for (int i = 0; i < listaProdutos.size(); i++) {
-            ProdutoModel p = listaProdutos.getElementAt(i);
+        for (int i = 0; i < getListaProdutos().size(); i++) {
+            ProdutoModel p = getListaProdutos().getElementAt(i);
 
             if (p.getId() == idBusca) {
                 return p;
@@ -73,7 +89,7 @@ public class ProdutoRepository {
         ProdutoModel produto = consultarPorId(idProdutoExcluir);
 
         if (produto != null) {
-            listaProdutos.removeElement(produto);
+            getListaProdutos().removeElement(produto);
         }
     }
 }

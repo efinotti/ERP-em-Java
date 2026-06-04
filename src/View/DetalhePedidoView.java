@@ -9,8 +9,148 @@ package View;
  * @author ueg
  */
 public class DetalhePedidoView extends javax.swing.JDialog {
+
+    /**
+     * @return the logger
+     */
+    public static java.util.logging.Logger getLogger() {
+        return logger;
+    }
+
+    /**
+     * @param aLogger the logger to set
+     */
+    public static void setLogger(java.util.logging.Logger aLogger) {
+        logger = aLogger;
+    }
+
+    /**
+     * @return the AlterarBtn
+     */
+    public javax.swing.JButton getAlterarBtn() {
+        return AlterarBtn;
+    }
+
+    /**
+     * @param AlterarBtn the AlterarBtn to set
+     */
+    public void setAlterarBtn(javax.swing.JButton AlterarBtn) {
+        this.AlterarBtn = AlterarBtn;
+    }
+
+    /**
+     * @return the CPFtxt
+     */
+    public javax.swing.JTextField getCPFtxt() {
+        return CPFtxt;
+    }
+
+    /**
+     * @param CPFtxt the CPFtxt to set
+     */
+    public void setCPFtxt(javax.swing.JTextField CPFtxt) {
+        this.CPFtxt = CPFtxt;
+    }
+
+    /**
+     * @return the ExcluirBtn
+     */
+    public javax.swing.JButton getExcluirBtn() {
+        return ExcluirBtn;
+    }
+
+    /**
+     * @param ExcluirBtn the ExcluirBtn to set
+     */
+    public void setExcluirBtn(javax.swing.JButton ExcluirBtn) {
+        this.ExcluirBtn = ExcluirBtn;
+    }
+
+    /**
+     * @return the InserirBtn1
+     */
+    public javax.swing.JButton getInserirBtn1() {
+        return InserirBtn1;
+    }
+
+    /**
+     * @param InserirBtn1 the InserirBtn1 to set
+     */
+    public void setInserirBtn1(javax.swing.JButton InserirBtn1) {
+        this.InserirBtn1 = InserirBtn1;
+    }
+
+    /**
+     * @return the RealizarBtn
+     */
+    public javax.swing.JButton getRealizarBtn() {
+        return RealizarBtn;
+    }
+
+    /**
+     * @param RealizarBtn the RealizarBtn to set
+     */
+    public void setRealizarBtn(javax.swing.JButton RealizarBtn) {
+        this.RealizarBtn = RealizarBtn;
+    }
+
+    /**
+     * @return the jLabel1
+     */
+    public javax.swing.JLabel getjLabel1() {
+        return jLabel1;
+    }
+
+    /**
+     * @param jLabel1 the jLabel1 to set
+     */
+    public void setjLabel1(javax.swing.JLabel jLabel1) {
+        this.jLabel1 = jLabel1;
+    }
+
+    /**
+     * @return the jLabel2
+     */
+    public javax.swing.JLabel getjLabel2() {
+        return jLabel2;
+    }
+
+    /**
+     * @param jLabel2 the jLabel2 to set
+     */
+    public void setjLabel2(javax.swing.JLabel jLabel2) {
+        this.jLabel2 = jLabel2;
+    }
+
+    /**
+     * @return the jScrollPane2
+     */
+    public javax.swing.JScrollPane getjScrollPane2() {
+        return jScrollPane2;
+    }
+
+    /**
+     * @param jScrollPane2 the jScrollPane2 to set
+     */
+    public void setjScrollPane2(javax.swing.JScrollPane jScrollPane2) {
+        this.jScrollPane2 = jScrollPane2;
+    }
+
+    /**
+     * @return the jTable1
+     */
+    public javax.swing.JTable getjTable1() {
+        return jTable1;
+    }
+
+    /**
+     * @param jTable1 the jTable1 to set
+     */
+    public void setjTable1(javax.swing.JTable jTable1) {
+        this.jTable1 = jTable1;
+    }
     
-    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(DetalhePedidoView.class.getName());
+    private static java.util.logging.Logger logger = java.util.logging.Logger.getLogger(DetalhePedidoView.class.getName());
 
     /**
      * Creates new form DetalhePedidoView
@@ -73,6 +213,9 @@ public class DetalhePedidoView extends javax.swing.JDialog {
                 "ID", "Nome", "Quantidade", "Valor Total"
             }
         ));
+        jTable1.setOpaque(false);
+        jTable1.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        jTable1.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         jScrollPane2.setViewportView(jTable1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -87,19 +230,17 @@ public class DetalhePedidoView extends javax.swing.JDialog {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1)
                     .addComponent(CPFtxt, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 418, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(57, 57, 57)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(RealizarBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(InserirBtn1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(12, 12, 12)
-                                .addComponent(AlterarBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(12, 12, 12)
-                                .addComponent(ExcluirBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(224, 224, 224)
-                                .addComponent(RealizarBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 418, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(AlterarBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(12, 12, 12)
+                        .addComponent(ExcluirBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(39, 39, 39))
         );
         layout.setVerticalGroup(
@@ -147,7 +288,7 @@ public class DetalhePedidoView extends javax.swing.JDialog {
                 }
             }
         } catch (ReflectiveOperationException | javax.swing.UnsupportedLookAndFeelException ex) {
-            logger.log(java.util.logging.Level.SEVERE, null, ex);
+            getLogger().log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 

@@ -6,6 +6,22 @@ import Util.ArquivoUtil;
 import javax.swing.DefaultListModel;
 
 public class ItemPedidoRepository {
+
+    public DefaultListModel<ItemPedidoModel> getListaItemPedido() {
+        return listaItemPedido;
+    }
+
+    public void setListaItemPedido(DefaultListModel<ItemPedidoModel> listaItemPedido) {
+        this.listaItemPedido = listaItemPedido;
+    }
+
+    public String getARQUIVO() {
+        return ARQUIVO;
+    }
+
+    public void setARQUIVO(String ARQUIVO) {
+        this.ARQUIVO = ARQUIVO;
+    }
     private DefaultListModel<ItemPedidoModel> listaItemPedido;
     private String ARQUIVO = "itemPedidos.csv";
 
@@ -23,13 +39,16 @@ public class ItemPedidoRepository {
         
         ItemPedidoModel itemPedido = new ItemPedidoModel(id, id_pedido, id_produto, quantidade);
         
-        listaItemPedido.addElement(itemPedido);
+        getListaItemPedido().addElement(itemPedido);
     }
     
     public void salvar() {
-        ArquivoUtil.armazenar(ARQUIVO, listaItemPedido);
+        ArquivoUtil.armazenar(getARQUIVO(), getListaItemPedido());
     }
     
+    public DefaultListModel<ItemPedidoModel> getList() {
+        return getListaItemPedido();
+    }
     
     
 }

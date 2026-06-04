@@ -19,6 +19,10 @@ public class PedidoRepository {
             listaPedidos = new DefaultListModel<>();
         }
     }
+    
+    public DefaultListModel<PedidoModel> getLista() {
+           return listaPedidos;
+    }
 
     public void incluir(ClienteModel cliente) {
         int id = listaPedidos.isEmpty() ? 1 : listaPedidos.lastElement().getId() + 1;
