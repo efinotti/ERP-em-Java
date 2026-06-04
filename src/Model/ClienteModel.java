@@ -2,28 +2,29 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package Entities;
+package Model;
 
-import Models.PedidoModel;
+import Repository.PedidoRepository;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.Instant;
 import java.util.ArrayList;
 import java.util.Date;
-import Util.ValiadorUtil;
+import Util.ValidadorUtil;
+import Repository.ClienteRepository.*;
 
 
 /**
  *
  * @author enzo
  */
-public class Cliente {
+public class ClienteModel {
     private int id;
     private String nome;
     private String cpf;
-    private ArrayList<Pedido> pedidos = new ArrayList<>();
+    private ArrayList<PedidoModel> pedidos = new ArrayList<>();
 
-    public Cliente(int id, String nome, String cpf) {
+    public ClienteModel(int id, String nome, String cpf) {
         this.id = id;
         this.nome = nome;
         try{
@@ -61,16 +62,13 @@ public class Cliente {
     }
     
     public void setCPF (String cpf) throws Exception {
-        if (ValiadorUtil.validadorCPF(cpf)) {
+        if (ValidadorUtil.validadorCPF(cpf)) {
             this.cpf = cpf;
         } else {
             throw new Exception("CPF inválido! Impossivel criar o Cliente");
         }
     }
 
-    /**
-     * @param nome the nome to set
-     */
     public void setNome(String nome) {
         this.nome = nome;
     }

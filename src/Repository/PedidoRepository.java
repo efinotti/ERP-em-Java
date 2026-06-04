@@ -1,65 +1,54 @@
-package erpapp.Repository;
+package Repository;
 
-import erpapp.Entities.Pedido;
-import erpapp.Entities.ItemPedido;
-import erpapp.Entities.Produto;
+import Model.ClienteModel;
+import Model.PedidoModel;
 import Util.ArquivoUtil;
-import java.util.ArrayList;
+import javax.swing.DefaultListModel;
 
 public class PedidoRepository {
-   
-    private ArrayList<Pedido> listaPedidos = new ArrayList<>();
+
+    private DefaultListModel<PedidoModel> listaPedidos;
+    private final String ARQUIVO = "pedidos.csv";
 
     public PedidoRepository() {
-        this.listaPedidos = ArquivoUtil.recuperarPedidos();
+        this.listaPedidos = new DefaultListModel<>();
     }
 
-    public void incluir(Pedido p) {
-        listaPedidos.add(p);
-        ArquivoUtil.salvarDados(listaPedidos);
+    public void incluir(ClienteModel cliente) {
+        int id = listaPedidos.isEmpty() ? 1 : listaPedidos.lastElement().getId() + 1;
+
+        PedidoModel pedido = new PedidoModel(id, cliente);
+        listaPedidos.addElement(pedido);
+
+        salvarNoArquivo();
     }
 
-    public ArrayList<Pedido> listar() {
-        return this.listaPedidos;
-    }
-    
-    public Pedido consultarPorId(int idBusca) {
-        for (Pedido p : listaPedidos) {
+    public PedidoModel consultarPorId(int idBusca) {
+        for (int i = 0; i < listaPedidos.size(); i++) {
+            PedidoModel p = listaPedidos.getElementAt(i);
+
             if (p.getId() == idBusca) {
                 return p;
             }
         }
+
         return null;
     }
 
-    public void alterarPedido(int idPedidoAlterar, Produto produtoNovo, int novaQuantidade) {
-        Pedido pedidoOriginal = consultarPorId(idPedidoAlterar);
+    public void excluir(int id) {
+        PedidoModel p = consultarPorId(id);
 
-        if (pedidoOriginal == null) {
-            System.err.println("Pedido não encontrado para alteração.");
-            return;
+        if (p != null) {
+            listaPedidos.removeElement(p);
+            salvarNoArquivo();
         }
-
-        boolean itemAtualizado = false;
-        for (ItemPedido item : pedidoOriginal.getItensPedido()) {
-            if (item.getProduto().getId() == produtoNovo.getId()) {
-                item.setQuantidade(novaQuantidade);
-                itemAtualizado = true;
-                break;
-            }
-        }
-        
-        if (!itemAtualizado) {
-            pedidoOriginal.adicionarItem(produtoNovo, novaQuantidade);
-        } else {
-            pedidoOriginal.recalcularTotal();
-        }
-
-        ArquivoUtil.salvarDados(listaPedidos);
     }
 
-    public void excluir(int idPedidoExcluir) {
-        listaPedidos.removeIf(pedido -> pedido.getId() == idPedidoExcluir);
-        ArquivoUtil.salvarDados(listaPedidos);
+    private void salvarNoArquivo() {
+        ArquivoUtil.armazenar(ARQUIVO, listaPedidos);
+    }
+
+    public DefaultListModel<PedidoModel> getListaPedidos() {
+        return listaPedidos;
     }
 }

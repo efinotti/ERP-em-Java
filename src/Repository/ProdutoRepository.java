@@ -1,66 +1,72 @@
-package erpapp.Repository;
+package Repository;
 
-import erpapp.Entities.Produto;
+import Model.ProdutoModel;
 import Util.ArquivoUtil;
-import java.util.ArrayList;
+import javax.swing.DefaultListModel;
 
 public class ProdutoRepository {
-    
-    private ArrayList<Produto> listaProduto = new ArrayList<>();
+
+    private DefaultListModel<ProdutoModel> listaProdutos;
 
     public ProdutoRepository() {
-        this.listaProduto = ArquivoUtil.recuperarProdutos();
+        // listaProdutos = new
     }
 
-    public void incluir(Produto p) {
-        listaProduto.add(p);
-        ArquivoUtil.salvarDados(listaProduto);
+    public void incluir(ProdutoModel produto) {
+        listaProdutos.addElement(produto);
     }
 
-    public ArrayList<Produto> listar() {
-        return this.listaProduto;
+    public DefaultListModel<ProdutoModel> listar() {
+        return listaProdutos;
     }
 
-    public ArrayList<Produto> consultarPorNome(String termo) {
-        ArrayList<Produto> filtrados = new ArrayList<>();
-        
+    public DefaultListModel<ProdutoModel> consultarPorNome(String termo) {
+        DefaultListModel<ProdutoModel> filtrados = new DefaultListModel<>();
+
         if (termo == null || termo.trim().isEmpty()) {
-            return listaProduto;
+            return listaProdutos;
         }
-        for (Produto p : listaProduto) {
+
+        for (int i = 0; i < listaProdutos.size(); i++) {
+            ProdutoModel p = listaProdutos.getElementAt(i);
+
             if (p.getNome().toLowerCase().contains(termo.toLowerCase())) {
-                filtrados.add(p);
+                filtrados.addElement(p);
             }
         }
+
         return filtrados;
     }
 
-    public Produto consultarPorId(int idBusca) {
-        for (Produto p : listaProduto) {
+    public ProdutoModel consultarPorId(int idBusca) {
+        for (int i = 0; i < listaProdutos.size(); i++) {
+            ProdutoModel p = listaProdutos.getElementAt(i);
+
             if (p.getId() == idBusca) {
                 return p;
             }
         }
+
         return null;
     }
 
-    public void alterar(Produto p) {
-        Produto pOriginal = consultarPorId(p.getId());
-        
-        if (pOriginal != null) {
-            pOriginal.setNome(p.getNome());
-            pOriginal.setPreco(p.getPreco());
-            pOriginal.setQuantidade(p.getQuantidade());
-            
-            ArquivoUtil.salvarDados(listaProduto);
-            System.out.println("Produto alterado com sucesso e salvo no ficheiro.");
-        } else {
-            System.err.println("Erro: Produto com o ID " + p.getId() + " não foi encontrado.");
+    public void alterar(ProdutoModel produto) {
+        ProdutoModel original = consultarPorId(produto.getId());
+
+        if (original != null) {
+            original.setNome(produto.getNome());
+            original.setPreco(produto.getPreco());
+            original.setQuantidade(produto.getQuantidade());
+
+            // ArquivoUtil.salvarDados(listaProdutos);
         }
     }
 
     public void remover(int idProdutoExcluir) {
-        listaProduto.removeIf(produto -> produto.getId() == idProdutoExcluir);
-        ArquivoUtil.salvarDados(listaProduto);
+        ProdutoModel produto = consultarPorId(idProdutoExcluir);
+
+        if (produto != null) {
+            listaProdutos.removeElement(produto);
+        }
     }
 }

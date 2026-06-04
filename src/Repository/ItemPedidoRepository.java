@@ -4,10 +4,15 @@
  */
 package Repository;
 
+import javax.swing.DefaultListModel;
+
 /**
  *
  * @author enzo
  */
+
 public class ItemPedidoRepository {
+
+    DefaultListModel<ItemPedidoRepository> itemPedido;
     
 }
