@@ -69,9 +69,6 @@ public class ClienteModel {
         }
     }
 
-    /**
-     * @param nome the nome to set
-     */
     public void setNome(String nome) {
         this.nome = nome;
     }
