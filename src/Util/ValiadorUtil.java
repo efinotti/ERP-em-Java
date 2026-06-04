@@ -9,6 +9,7 @@ package Util;
  * @author enzo
  */
 public class ValiadorUtil {
+    
     public static boolean validadorCPF (String cpf) throws Exception {
         if (cpf.length() != 11) {
             int soma = 0;

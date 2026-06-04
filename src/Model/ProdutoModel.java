@@ -1,6 +1,4 @@
-package Models;
-
-import Entities.*;
+package Model;
 
 public class ProdutoModel {
     private int id;
@@ -63,6 +61,11 @@ public class ProdutoModel {
         } else {
             
         }
+    }
+    
+        @Override
+    public String toString() {
+        return String.format("%d;%s;%f;%d", id, nome, preco, quantidade); 
     }
     
 }

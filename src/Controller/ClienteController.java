@@ -4,7 +4,7 @@
  */
 package Controller;
 
-import Entities.Cliente;
+import Model.ClienteModel;
 import javax.swing.DefaultListModel;
 
 /**

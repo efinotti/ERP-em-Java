@@ -3,13 +3,13 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package Controller;
-import Entities.Pedido;
+import Model.PedidoModel;
 import javax.swing.DefaultListModel;
 /**
  *
  * @author enzo
  */
 public class PedidoController {
-    private Pedido model;
-    private DefaultListModel<Pedido> listModel = new DefaultListModel<>();
+    private PedidoModel model;
+    private DefaultListModel<PedidoModel> listModel = new DefaultListModel<>();
 }

@@ -1,50 +1,52 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package Util;
 
-import Entities.Pedido.*;
-
-/**
- *
- * @author enzo
- *
- 
- /*
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import javax.swing.DefaultListModel;
+import javax.swing.ListModel;
  
 public class ArquivoUtil {
     
-}
-
-    public void armazenar(){
-        try(PrintWriter writer = new PrintWriter(new FileWriter(ARQUIVO))){
-            for(Pedido p: listaPedido){
-                writer.println(p.getId() + ";" + p.getCliente() + ";" + p.getProduto() + ";" + p.getValor());
+    // SO SERA CHAMADO NA HORA QUE O SISTEMA FECHAR
+    public void armazenar(String nomeArquivo, DefaultListModel<?> listModel) {
+        File file = new File(nomeArquivo);
+        try {
+            if (file.createNewFile()){
+                System.out.println("Arquivo criado");
+            } else {
+                System.out.println("Arquivo ja existe");
             }
-        }catch(IOException e){
-            System.out.println("Erro ao salvar arquivo:" + e.getMessage());
+            
+            FileWriter fw = new FileWriter(file);
+            
+            for (int i = 0; i < listModel.size(); i++) {
+                fw.write(listModel.elementAt(i).toString() + "\n");
+            }
+            
+            fw.close();
+            
+        } catch (IOException e) {
+            System.err.println(e);
         }
     }
     
-    public void recuperar(){
-        File file = new File(ARQUIVO);
-        if(!file.exists()){ return;
-        }
         
-        try(BufferedReader reader = new BufferedReader(new FileReader(file))){
-            String linha;
-            while((linha = reader.readLine()) != null){
-                String[] dados = linha.split(";");
-                if(dados.length == 4){
-                    int numero = Integer.parseInt(dados[0]);
-                    double valor = Double.parseDouble(dados[3]);
-                    listaPedido.add(new Pedido(numero,dados[1],dados[2],valor));
-                }
+    // 1 - Cliente | 2 - Produto | 3 - ItemProduto | 4 - Pedido
+    public void ler(String nomeArquivo, int identificador, ListModel<?> list) {
+        switch(identificador){
+            case 1 -> {
+                
             }
-        }catch(IOException | NumberFormaException e){
-            System.out.println("Erro ao recuperar os dados:" + e.getMessage());
-        }
+            case 2 -> {
+                
+            }
+            case 3 -> {
+                
+            }
+            case 4 -> {
+                
+            }
+}
     }
-
-*/
+}

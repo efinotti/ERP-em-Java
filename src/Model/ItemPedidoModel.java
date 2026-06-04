@@ -2,24 +2,24 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package Entities;
+package Model;
 
 /**
  *
  * @author enzo
  */
-public class ItemPedido {
+public class ItemPedidoModel {
 
-    private Pedido pedido;
+    private PedidoModel pedido;
     private int id_pedido;
     private int id;
-    private Produto produto;
+    private ProdutoModel produto;
     private int id_produto;
     private int quantidade;
     private float preco_uni;
     private float preco_total;
 
-    public ItemPedido(Pedido pedido, int id, Produto produto, int quantidade) {
+    public ItemPedidoModel(PedidoModel pedido, int id, ProdutoModel produto, int quantidade) {
         this.pedido = pedido;
         this.produto = produto;
         this.id = id;
@@ -44,6 +44,10 @@ public class ItemPedido {
     public void setId(int id) {
         this.id = id;
     }
+    
+    public float getPrecoTotal(){
+        return preco_total;
+    }
 
     /**
      * @param quantidade the quantidade to set
@@ -67,6 +71,11 @@ public class ItemPedido {
             throw new ArithmeticException("Quantidade deve ser igual ou maior que um");
         }
         
+    }
+    
+    @Override
+    public String toString() {
+        return String.format("%d;%d;%d;%d;%f\n", id, id_pedido, id_produto, quantidade, preco_total); 
     }
     
     
