@@ -4,10 +4,6 @@
  */
 package View;
 
-/**
- *
- * @author GabrielPradoMenezes
- */
 public class MenuView extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(MenuView.class.getName());

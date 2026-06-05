@@ -23,11 +23,11 @@ public class ConfirmarPedidoView extends javax.swing.JDialog {
     }
 
     public javax.swing.JButton getInserirBttn() {
-        return inserirBttn;
+        return CancelarBttn;
     }
 
     public void setInserirBttn(javax.swing.JButton inserirBttn) {
-        this.inserirBttn = inserirBttn;
+        this.CancelarBttn = inserirBttn;
     }
 
     public javax.swing.JScrollPane getjScrollPane1() {
@@ -37,23 +37,6 @@ public class ConfirmarPedidoView extends javax.swing.JDialog {
     public void setjScrollPane1(javax.swing.JScrollPane jScrollPane1) {
         this.jScrollPane1 = jScrollPane1;
     }
-
-    public javax.swing.JTextField getQuantidadeField() {
-        return quantidadeField;
-    }
-
-    public void setQuantidadeField(javax.swing.JTextField quantidadeField) {
-        this.quantidadeField = quantidadeField;
-    }
-
-    public javax.swing.JLabel getQuantidadeLBl() {
-        return quantidadeLBl;
-    }
-
-    public void setQuantidadeLBl(javax.swing.JLabel quantidadeLBl) {
-        this.quantidadeLBl = quantidadeLBl;
-    }
-
     public javax.swing.JTable getTableProdutos() {
         return tableProdutos;
     }
@@ -84,14 +67,14 @@ public class ConfirmarPedidoView extends javax.swing.JDialog {
         Titulo = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tableProdutos = new javax.swing.JTable();
-        inserirBttn = new javax.swing.JButton();
-        quantidadeField = new javax.swing.JTextField();
-        quantidadeLBl = new javax.swing.JLabel();
+        CancelarBttn = new javax.swing.JButton();
+        ConfirmarBttn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         Titulo.setFont(new java.awt.Font("sansserif", 0, 24)); // NOI18N
-        Titulo.setText("jLabel1");
+        Titulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Titulo.setText("Confirmação de Pedido");
 
         tableProdutos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -103,37 +86,39 @@ public class ConfirmarPedidoView extends javax.swing.JDialog {
             new String [] {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane1.setViewportView(tableProdutos);
 
-        inserirBttn.setText("INSERIR");
+        CancelarBttn.setText("Cancelar");
 
-        quantidadeField.addActionListener(this::quantidadeFieldActionPerformed);
-
-        quantidadeLBl.setText("QUANTIDADE");
+        ConfirmarBttn.setText("Confirmar");
+        ConfirmarBttn.addActionListener(this::ConfirmarBttnActionPerformed);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(Titulo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(Titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(143, 143, 143)
-                                .addComponent(inserirBttn)))
-                        .addGap(0, 78, Short.MAX_VALUE)))
-                .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addGap(83, 83, 83)
-                .addComponent(quantidadeLBl)
-                .addGap(34, 34, 34)
-                .addComponent(quantidadeField, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 70, Short.MAX_VALUE)
+                        .addComponent(CancelarBttn, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 72, Short.MAX_VALUE)
+                        .addComponent(ConfirmarBttn, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(72, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -142,21 +127,19 @@ public class ConfirmarPedidoView extends javax.swing.JDialog {
                 .addComponent(Titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 94, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(quantidadeField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(quantidadeLBl))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(inserirBttn)
-                .addContainerGap())
+                    .addComponent(ConfirmarBttn, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(CancelarBttn, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(16, 16, 16))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void quantidadeFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quantidadeFieldActionPerformed
+    private void ConfirmarBttnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConfirmarBttnActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_quantidadeFieldActionPerformed
+    }//GEN-LAST:event_ConfirmarBttnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -196,11 +179,10 @@ public class ConfirmarPedidoView extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton CancelarBttn;
+    private javax.swing.JButton ConfirmarBttn;
     private javax.swing.JLabel Titulo;
-    private javax.swing.JButton inserirBttn;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField quantidadeField;
-    private javax.swing.JLabel quantidadeLBl;
     private javax.swing.JTable tableProdutos;
     // End of variables declaration//GEN-END:variables
 }
