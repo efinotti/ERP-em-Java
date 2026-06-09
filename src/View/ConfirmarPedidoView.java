@@ -10,6 +10,62 @@ package View;
  */
 public class ConfirmarPedidoView extends javax.swing.JDialog {
 
+    /**
+     * @return the jLabel1
+     */
+    public javax.swing.JLabel getjLabel1() {
+        return jLabel1;
+    }
+
+    /**
+     * @return the jTextField1
+     */
+    public javax.swing.JTextField getjTextField1() {
+        return jTextField1;
+    }
+
+    /**
+     * @param jLabel1 the jLabel1 to set
+     */
+    public void setjLabel1(javax.swing.JLabel jLabel1) {
+        this.jLabel1 = jLabel1;
+    }
+
+    /**
+     * @param jTextField1 the jTextField1 to set
+     */
+    public void setjTextField1(javax.swing.JTextField jTextField1) {
+        this.jTextField1 = jTextField1;
+    }
+
+    /**
+     * @return the CancelarBttn
+     */
+    public javax.swing.JButton getCancelarBttn() {
+        return CancelarBttn;
+    }
+
+    /**
+     * @return the ConfirmarBttn
+     */
+    public javax.swing.JButton getConfirmarBttn() {
+        return ConfirmarBttn;
+    }
+
+    /**
+     * @param CancelarBttn the CancelarBttn to set
+     */
+    public void setCancelarBttn(javax.swing.JButton CancelarBttn) {
+        this.CancelarBttn = CancelarBttn;
+    }
+
+    /**
+     * @param ConfirmarBttn the ConfirmarBttn to set
+     */
+    public void setConfirmarBttn(javax.swing.JButton ConfirmarBttn) {
+        this.ConfirmarBttn = ConfirmarBttn;
+    }
+
     public static java.util.logging.Logger getLogger() {
         return logger;
     }
@@ -23,11 +79,11 @@ public class ConfirmarPedidoView extends javax.swing.JDialog {
     }
 
     public javax.swing.JButton getInserirBttn() {
-        return CancelarBttn;
+        return getCancelarBttn();
     }
 
     public void setInserirBttn(javax.swing.JButton inserirBttn) {
-        this.CancelarBttn = inserirBttn;
+        this.setCancelarBttn(inserirBttn);
     }
 
     public javax.swing.JScrollPane getjScrollPane1() {
@@ -69,6 +125,8 @@ public class ConfirmarPedidoView extends javax.swing.JDialog {
         tableProdutos = new javax.swing.JTable();
         CancelarBttn = new javax.swing.JButton();
         ConfirmarBttn = new javax.swing.JButton();
+        jTextField1 = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -102,23 +160,31 @@ public class ConfirmarPedidoView extends javax.swing.JDialog {
         ConfirmarBttn.setText("Confirmar");
         ConfirmarBttn.addActionListener(this::ConfirmarBttnActionPerformed);
 
+        jTextField1.addActionListener(this::jTextField1ActionPerformed);
+
+        jLabel1.setText("Quantidade");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(Titulo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(Titulo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 400, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                        .addContainerGap())
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 70, Short.MAX_VALUE)
+                        .addComponent(jLabel1)
+                        .addGap(98, 98, 98)
+                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
                         .addComponent(CancelarBttn, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 72, Short.MAX_VALUE)
-                        .addComponent(ConfirmarBttn, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(72, Short.MAX_VALUE))))
+                        .addGap(98, 98, 98)
+                        .addComponent(ConfirmarBttn, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(6, 6, 6)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -127,7 +193,11 @@ public class ConfirmarPedidoView extends javax.swing.JDialog {
                 .addComponent(Titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 94, Short.MAX_VALUE)
+                .addGap(27, 27, 27)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1))
+                .addGap(43, 43, 43)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(ConfirmarBttn, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(CancelarBttn, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -140,6 +210,10 @@ public class ConfirmarPedidoView extends javax.swing.JDialog {
     private void ConfirmarBttnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConfirmarBttnActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_ConfirmarBttnActionPerformed
+
+    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -182,7 +256,9 @@ public class ConfirmarPedidoView extends javax.swing.JDialog {
     private javax.swing.JButton CancelarBttn;
     private javax.swing.JButton ConfirmarBttn;
     private javax.swing.JLabel Titulo;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextField jTextField1;
     private javax.swing.JTable tableProdutos;
     // End of variables declaration//GEN-END:variables
 }

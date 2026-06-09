@@ -1,4 +1,4 @@
-package Controller; // Ou crie um pacote específico como 'Util' ou 'TableModel'
+package TableModel; 
 
 import Model.PedidoModel;
 import javax.swing.DefaultListModel;

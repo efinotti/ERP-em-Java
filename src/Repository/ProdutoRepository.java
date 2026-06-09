@@ -6,6 +6,9 @@ import javax.swing.DefaultListModel;
 
 public class ProdutoRepository {
 
+    private DefaultListModel<ProdutoModel> listaProdutos;
+    private String ARQUIVO = "produtos.csv";
+
     public DefaultListModel<ProdutoModel> getListaProdutos() {
         return listaProdutos;
     }
@@ -22,11 +25,9 @@ public class ProdutoRepository {
         this.ARQUIVO = ARQUIVO;
     }
 
-    private DefaultListModel<ProdutoModel> listaProdutos;
-    private String ARQUIVO = "produtos.csv";
-
+    @SuppressWarnings("unchecked")
     public ProdutoRepository() {
-        DefaultListModel<?> listaGenerica = ArquivoUtil.ler(2);
+        Object listaGenerica = ArquivoUtil.ler(2);
         
         if (listaGenerica != null) {
             listaProdutos = (DefaultListModel<ProdutoModel>) listaGenerica;
@@ -37,6 +38,7 @@ public class ProdutoRepository {
 
     public void incluir(ProdutoModel produto) {
         getListaProdutos().addElement(produto);
+        salvar();
     }
 
     public DefaultListModel<ProdutoModel> listar() {
@@ -80,8 +82,7 @@ public class ProdutoRepository {
             original.setNome(produto.getNome());
             original.setPreco(produto.getPreco());
             original.setQuantidade(produto.getQuantidade());
-
-            // ArquivoUtil.salvarDados(listaProdutos);
+            salvar();
         }
     }
 
@@ -90,6 +91,11 @@ public class ProdutoRepository {
 
         if (produto != null) {
             getListaProdutos().removeElement(produto);
+            salvar();
         }
+    }
+
+    public void salvar() {
+        ArquivoUtil.armazenar(ARQUIVO, listaProdutos);
     }
 }
