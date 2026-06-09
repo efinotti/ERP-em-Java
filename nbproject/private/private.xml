@@ -3,14 +3,16 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/home/enzoo/NetBeansProjects/ERP-em-Java/src/Controller/PedidoController.java</file>
-            <file>file:/home/enzoo/NetBeansProjects/ERP-em-Java/src/Repository/PedidoRepository.java</file>
-            <file>file:/home/enzoo/NetBeansProjects/ERP-em-Java/src/View/DetalhePedidoView.java</file>
-            <file>file:/home/enzoo/NetBeansProjects/ERP-em-Java/src/TableModel/PedidoTableModel.java</file>
-            <file>file:/home/enzoo/NetBeansProjects/ERP-em-Java/src/View/ConfirmarPedidoView.java</file>
-            <file>file:/home/enzoo/NetBeansProjects/ERP-em-Java/src/View/PedidoView.java</file>
-            <file>file:/home/enzoo/NetBeansProjects/ERP-em-Java/src/View/AdicionarItemPedidoView.java</file>
-            <file>file:/home/enzoo/NetBeansProjects/ERP-em-Java/src/View/ClienteView.java</file>
+            <file>file:/home/enzo/NetBeansProjects/ERPApp/src/Model/PedidoModel.java</file>
+            <file>file:/home/enzo/NetBeansProjects/ERPApp/src/Repository/PedidoRepository.java</file>
+            <file>file:/home/enzo/NetBeansProjects/ERPApp/src/TableModel/PedidoTableModel.java</file>
+            <file>file:/home/enzo/NetBeansProjects/ERPApp/src/View/ClienteView.java</file>
+            <file>file:/home/enzo/NetBeansProjects/ERPApp/src/Util/ArquivoUtil.java</file>
+            <file>file:/home/enzo/NetBeansProjects/ERPApp/src/View/AdicionarItemPedidoView.java</file>
+            <file>file:/home/enzo/NetBeansProjects/ERPApp/src/View/DetalhePedidoView.java</file>
+            <file>file:/home/enzo/NetBeansProjects/ERPApp/src/View/ConfirmarPedidoView.java</file>
+            <file>file:/home/enzo/NetBeansProjects/ERPApp/src/Repository/ProdutoRepository.java</file>
+            <file>file:/home/enzo/NetBeansProjects/ERPApp/src/Controller/PedidoController.java</file>
         </group>
     </open-files>
 </project-private>

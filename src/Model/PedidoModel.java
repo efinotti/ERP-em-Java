@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.Date;
 
 public class PedidoModel {
-    
     private ArrayList<ItemPedidoModel> itensPedido = new ArrayList<>();
     private int id;
     private int id_cliente;
@@ -22,30 +21,28 @@ public class PedidoModel {
         this.dt_entrega = new Date();
         this.vlr_total = 0.0f;
     }
-    
-    public PedidoModel(int id, int id_cliente, Date dt_pedido, Date dt_entrega, float vlr_total){
+
+    public PedidoModel(int id, int id_cliente, Date dt_pedido, Date dt_entrega, float vlr_total) {
         this.id = id;
         this.id_cliente = id_cliente;
-        this.dt_entrega = dt_entrega;
         this.dt_pedido = dt_pedido;
+        this.dt_entrega = dt_entrega;
         this.vlr_total = vlr_total;
     }
-    
+
     public void adicionarItemPedido(ProdutoModel produto, int quantidade) {
         int novoId = itensPedido.isEmpty() ? 1 : itensPedido.get(itensPedido.size() - 1).getId() + 1;
-        
         int id_produto = produto.getId();
-        
         ItemPedidoModel novoItem = new ItemPedidoModel(novoId, this.id, id_produto, quantidade);
         itensPedido.add(novoItem);
         calcularValorTotal();
     }
-    
+
     public void removerItemPedido(ItemPedidoModel item) {
         itensPedido.remove(item);
         calcularValorTotal();
     }
-    
+
     private void calcularValorTotal() {
         this.vlr_total = 0.0f;
         for (ItemPedidoModel item : itensPedido) {
@@ -97,10 +94,11 @@ public class PedidoModel {
     public float getVlr_total() {
         return vlr_total;
     }
-    
+
     @Override
     public String toString() {
-        SimpleDateFormat sdf = new java.text.SimpleDateFormat("yyyy-MM-dd");
-        return String.format("%d;%d;%s;%s;%.2f", id,  id_cliente, sdf.format(dt_pedido), sdf.format(dt_entrega), vlr_total);
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        return String.format("%d;%d;%s;%s;%.2f", id, id_cliente,
+                sdf.format(dt_pedido), sdf.format(dt_entrega), vlr_total);
     }
 }
