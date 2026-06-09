@@ -33,8 +33,6 @@ public class ClienteModel {
         }   
     }
     
-   
-
     /**
      * @return the id
      */
@@ -65,6 +63,14 @@ public class ClienteModel {
             this.cpf = cpf;
         } else {
             throw new Exception("CPF inválido! Impossivel criar o Cliente");
+        }
+    }
+
+    public void atualizarCPF(String cpf) {
+        if (ValidadorUtil.validadorCPF(cpf)) {
+            this.cpf = cpf;
+        } else {
+            System.err.println("Aviso: Falha ao alterar. CPF " + cpf + " é inválido!");
         }
     }
 
