@@ -21,7 +21,6 @@ public class ClienteRepository {
         }
     }
     
-    
     public void criarCliente(String nome, String cpf) {
         try {
             if (verificarClienteExiste(cpf) != null) {
@@ -37,6 +36,21 @@ public class ClienteRepository {
         }
     }
     
+    public void alterarCliente(int id, String novoNome, String novoCpf) {
+        for (int i = 0; i < clientes.size(); i++) {
+            ClienteModel cliente = clientes.getElementAt(i);
+            if (cliente.getId() == id) {
+                cliente.setNome(novoNome);
+                cliente.atualizarCPF(novoCpf);
+                
+                clientes.setElementAt(cliente, i); 
+                salvarNoArquivo(); 
+                return;
+            }
+        }
+        System.err.println("Erro: Cliente com o ID " + id + " não foi encontrado para alteração.");
+    }
+    
     public void removerCliente(int id) {
         for (int i = 0; i < clientes.size(); i++) {
             if (clientes.getElementAt(i).getId() == id) {
@@ -45,6 +59,16 @@ public class ClienteRepository {
                 break;
             }
         }
+    }
+    
+    public ClienteModel consultarPorId(int id) {
+        for (int i = 0; i < clientes.getSize(); i++) {
+            ClienteModel cliente = clientes.getElementAt(i);
+            if (cliente.getId() == id) {
+                return cliente;
+            }
+        }
+        return null;
     }
     
     public ClienteModel verificarClienteExiste(String cpf) throws NullPointerException {
