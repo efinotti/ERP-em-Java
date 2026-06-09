@@ -161,7 +161,7 @@ public class PedidoController {
                         
                         ProdutoModel produto = produtoRepository.consultarPorId(item.getIdProduto());
                         if (produto != null) {
-                            produto.setQuantidade(produto.getQuantidade() + item.getQuantidade());
+                            produto.setQuantidade(produto.getQuantidade()+ item.getQuantidade());
                         }
                     }
                 }
