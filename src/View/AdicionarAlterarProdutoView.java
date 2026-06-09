@@ -201,4 +201,10 @@ public class AdicionarAlterarProdutoView extends javax.swing.JDialog {
     private javax.swing.JTextField jTextField4;
     private javax.swing.JTable tabela;
     // End of variables declaration//GEN-END:variables
+
+public javax.swing.JButton getInserirBtn() { return InserirBtn; }
+public javax.swing.JTextField getjTextField1() { return jTextField1; } // ID
+public javax.swing.JTextField getjTextField2() { return jTextField2; } // Nome
+public javax.swing.JTextField getjTextField3() { return jTextField3; } // Preço
+public javax.swing.JTextField getjTextField4() { return jTextField4; } // Estoque
 }

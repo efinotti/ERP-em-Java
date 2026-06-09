@@ -76,40 +76,35 @@ public class ArquivoUtil {
                 
             }
             case 2 -> {
-                File file = new File("produtos.csv");
-                
-                if (file.exists()){
-                    DefaultListModel<ProdutoModel> listaProdutos = new DefaultListModel<>();
-                    
-                    try {
-                        Scanner scan = new Scanner(file);
-                        
-                        while (scan.hasNextLine()) {
-                            String data = scan.nextLine();
-                            String[] textoSeparado = data.split(";");
-                            
-                            int id = Integer.parseInt(textoSeparado[0]);
-                            String nome = textoSeparado[1];
-                            float preco = Float.parseFloat(textoSeparado[2]);
-                            int quantidade = Integer.parseInt(textoSeparado[3]);
-                            
-                            ProdutoModel produto = new ProdutoModel(id, nome, preco, quantidade);
-                            
-                            listaProdutos.addElement(produto);
-                            
-                        }
-                        
-                        scan.close();
-                        return listaProdutos;
-                        
-                    } catch (IOException e) {
-                        System.out.println("Erro na Criação do FileReader" + e);
+        File file = new File("produtos.csv");
+        
+        DefaultListModel<ProdutoModel> listaProdutos = new DefaultListModel<>();
+        
+        if (file.exists()) {
+            try (java.util.Scanner scan = new java.util.Scanner(file)) {
+                while (scan.hasNextLine()) {
+                    String data = scan.nextLine();
+                    if (data.trim().isEmpty()) continue; 
+
+                    String[] textoSeparado = data.split(";");
+                    if (textoSeparado.length >= 4) {
+                        int id = Integer.parseInt(textoSeparado[0]);
+                        String nome = textoSeparado[1];
+                        // Substitui vírgula por ponto para evitar NumberFormatException
+                        float preco = Float.parseFloat(textoSeparado[2].replace(",", "."));
+                        int quantidade = Integer.parseInt(textoSeparado[3]);
+
+                        ProdutoModel produto = new ProdutoModel(id, nome, preco, quantidade);
+                        listaProdutos.addElement(produto);
                     }
-                } else {
-                    return null;
                 }
-                
+                return listaProdutos;
+            } catch (Exception e) {
+                System.out.println("Erro na Leitura do Arquivo de Produtos: " + e.getMessage());
             }
+        }
+        return listaProdutos;
+    }
             case 3 -> {
                 File file = new File("itemPedidos.csv.csv");
                 

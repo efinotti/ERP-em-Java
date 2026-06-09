@@ -135,4 +135,16 @@ public class MenuView extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     // End of variables declaration//GEN-END:variables
+
+public javax.swing.JButton getGerirClientesBtn() {
+        return GerirClientesBtn;
+    }
+
+    public javax.swing.JButton getGerirPedidosBtn() {
+        return GerirPedidosBtn;
+    }
+
+    public javax.swing.JButton getGerirProdutosBtn() {
+        return GerirProdutosBtn;
+    }
 }

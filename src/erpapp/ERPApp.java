@@ -1,32 +1,21 @@
 package erpapp;
 
 import Controller.MenuController;
-import Controller.PedidoController;
 import javax.swing.SwingUtilities;
-
-import Repository.PedidoRepository;
-import Repository.ProdutoRepository;
 import View.MenuView;
-import View.PedidoView;
 
 public class ERPApp {
 
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> {
+            // 1. Instancia a tela do Menu Principal (MenuView)
+            MenuView menuView = new MenuView();
             
-            PedidoView view = new PedidoView();
-            PedidoRepository repository = new PedidoRepository();
-            ProdutoRepository produtoRepository = new ProdutoRepository();
+            // 2. Inicializa o controlador do menu passando a view correspondente
+            MenuController menuController = new MenuController(menuView);
             
-            PedidoController controller = new PedidoController(repository, view, produtoRepository);
-            
+            // 3. Torna a janela do Menu Principal visível para o usuário
+            menuView.setVisible(true);
         });
-        /* Aqui eu to achando que vamos ter que criar uma View de um Menu
-        Principal, e que ao escolher uma opção (ex: Pedido) ele invoka a View 
-        correspondente.
-        Coloquei um rascunho bem mal feito lá no View do Menu, só pra tentar 
-        exemplificar o que to falando
-        */
     }
 }
-   
