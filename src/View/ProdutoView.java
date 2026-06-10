@@ -146,4 +146,20 @@ public class ProdutoView extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable tabela;
     // End of variables declaration//GEN-END:variables
+
+    public javax.swing.JButton getInserirBtn() {
+        return InserirBtn;
+    }
+
+    public javax.swing.JButton getAlterarBtn() {
+        return AlterarBtn;
+    }
+
+    public javax.swing.JButton getExcluirBtn() {
+        return ExcluirBtn;
+    }
+
+    public javax.swing.JTable getTabela() {
+        return tabela;
+    }
 }

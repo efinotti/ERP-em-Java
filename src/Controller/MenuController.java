@@ -1,22 +1,51 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package Controller;
 
 import View.MenuView;
+import View.PedidoView;
+import View.ProdutoView;
+import View.ClienteView;
 
-/**
- *
- * @author enzo
- */
+import Repository.PedidoRepository;
+import Repository.ProdutoRepository;
+import Repository.ClienteRepository;
+
 public class MenuController {
-    MenuView view;
+    private final MenuView view;
 
     public MenuController(MenuView view) {
         this.view = view;
+        initListeners();
     }
-    
-    
-    
+
+    private void initListeners() {
+        this.view.getGerirClientesBtn().addActionListener(e -> abrirModuloClientes());
+        this.view.getGerirPedidosBtn().addActionListener(e -> abrirModuloPedidos());
+        this.view.getGerirProdutosBtn().addActionListener(e -> abrirModuloProdutos());
+    }
+
+    private void abrirModuloClientes() {
+        ClienteView clienteView = new ClienteView();
+        ClienteRepository clienteRepo = new ClienteRepository();
+        
+        new ClienteController();
+        
+        clienteView.setVisible(true);
+    }
+
+    private void abrirModuloPedidos() {
+        PedidoView pedidoView = new PedidoView();
+        PedidoRepository pedidoRepo = new PedidoRepository();
+        ProdutoRepository produtoRepo = new ProdutoRepository();
+        
+        new PedidoController(pedidoRepo, pedidoView, produtoRepo);
+        pedidoView.setVisible(true);
+    }
+
+    private void abrirModuloProdutos() {
+        ProdutoView produtoView = new ProdutoView();
+        ProdutoRepository produtoRepo = new ProdutoRepository();
+        
+        new ProdutoController();
+        produtoView.setVisible(true);
+    }
 }

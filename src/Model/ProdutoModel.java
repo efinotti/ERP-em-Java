@@ -48,7 +48,6 @@ public class ProdutoModel {
 
     @Override
     public String toString() {
-        return String.format("%d;%s;%f;%d",
-                id, nome, preco, quantidade);
+        return id + ";" + nome + ";" + preco + ";" + quantidade;
     }
 }

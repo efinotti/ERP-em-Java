@@ -58,4 +58,16 @@ public class ValidadorUtil {
             throw new Exception("Erro!!! CPF tem menos/mais de 11 digitos.\n");
         }
     }
+
+public static void validarProduto(String nome, float preco, int quantidade) throws Exception {
+        if (nome == null || nome.trim().isEmpty()) {
+            throw new Exception("O nome do produto é obrigatório e não pode ser vazio.");
+        }
+        if (preco < 0) {
+            throw new Exception("O preço do produto não pode ser um valor negativo.");
+        }
+        if (quantidade < 0) {
+            throw new Exception("A quantidade em estoque não pode ser negativa.");
+        }
+    }
 }
