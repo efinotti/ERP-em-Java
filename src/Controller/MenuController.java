@@ -23,11 +23,10 @@ public class MenuController {
         this.view.getGerirProdutosBtn().addActionListener(e -> abrirModuloProdutos());
     }
 
-    private void abrirModuloClientes() {
+private void abrirModuloClientes() {
         ClienteView clienteView = new ClienteView();
         ClienteRepository clienteRepo = new ClienteRepository();
-        
-        new ClienteController(clienteView, clienteRepo);
+        new ClienteController(clienteView, clienteRepo); 
         
         clienteView.setVisible(true);
     }

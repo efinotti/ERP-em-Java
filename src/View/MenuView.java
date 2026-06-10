@@ -86,21 +86,15 @@ public class MenuView extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void GerirClientesBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GerirClientesBtnActionPerformed
-        ClienteView telacliente = new ClienteView();    
-            telacliente.setVisible(true);
-            telacliente.toFront();
+
     }//GEN-LAST:event_GerirClientesBtnActionPerformed
 
     private void GerirPedidosBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GerirPedidosBtnActionPerformed
-        PedidoView telapedido = new PedidoView();    
-            telapedido.setVisible(true);
-            telapedido.toFront();
+
     }//GEN-LAST:event_GerirPedidosBtnActionPerformed
 
     private void GerirProdutosBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GerirProdutosBtnActionPerformed
-        ProdutoView telaproduto = new ProdutoView();    
-            telaproduto.setVisible(true);
-            telaproduto.toFront();
+
     }//GEN-LAST:event_GerirProdutosBtnActionPerformed
 
     /**

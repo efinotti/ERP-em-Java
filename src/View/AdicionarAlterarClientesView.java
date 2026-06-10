@@ -31,12 +31,12 @@ public class AdicionarAlterarClientesView extends javax.swing.JDialog {
 
         jLabel2 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        InserirBtn = new javax.swing.JButton();
+        BtnConfirmar = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         tabela = new javax.swing.JTable();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
+        TxtNome = new javax.swing.JTextField();
+        TxtCpf = new javax.swing.JTextField();
+        TxtId = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
 
@@ -49,9 +49,9 @@ public class AdicionarAlterarClientesView extends javax.swing.JDialog {
 
         jLabel4.setText("CPF");
 
-        InserirBtn.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
-        InserirBtn.setText("Confirmar Cliente");
-        InserirBtn.addActionListener(this::InserirBtnActionPerformed);
+        BtnConfirmar.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        BtnConfirmar.setText("Confirmar Cliente");
+        BtnConfirmar.addActionListener(this::BtnConfirmarActionPerformed);
 
         tabela.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -74,7 +74,7 @@ public class AdicionarAlterarClientesView extends javax.swing.JDialog {
         });
         jScrollPane2.setViewportView(tabela);
 
-        jTextField1.addActionListener(this::jTextField1ActionPerformed);
+        TxtNome.addActionListener(this::TxtNomeActionPerformed);
 
         jLabel1.setText("ID Cliente");
 
@@ -90,20 +90,18 @@ public class AdicionarAlterarClientesView extends javax.swing.JDialog {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel4)
-                                .addGap(120, 120, 120)))
+                            .addComponent(TxtCpf, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel4))
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(TxtId, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel1)
                             .addComponent(jLabel3)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 413, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(InserirBtn, javax.swing.GroupLayout.Alignment.TRAILING))
+                                .addComponent(TxtNome, javax.swing.GroupLayout.PREFERRED_SIZE, 413, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(BtnConfirmar, javax.swing.GroupLayout.Alignment.TRAILING))
                         .addContainerGap(44, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
@@ -116,30 +114,30 @@ public class AdicionarAlterarClientesView extends javax.swing.JDialog {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel1)
                 .addGap(2, 2, 2)
-                .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(TxtId, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
                 .addComponent(jLabel4)
                 .addGap(2, 2, 2)
-                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(TxtCpf, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
                 .addComponent(jLabel3)
                 .addGap(2, 2, 2)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(TxtNome, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 84, Short.MAX_VALUE)
-                .addComponent(InserirBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(BtnConfirmar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(14, 14, 14))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void TxtNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxtNomeActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_TxtNomeActionPerformed
 
-    private void InserirBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InserirBtnActionPerformed
+    private void BtnConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnConfirmarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_InserirBtnActionPerformed
+    }//GEN-LAST:event_BtnConfirmarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -179,15 +177,15 @@ public class AdicionarAlterarClientesView extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton InserirBtn;
+    private javax.swing.JButton BtnConfirmar;
+    private javax.swing.JTextField TxtCpf;
+    private javax.swing.JTextField TxtId;
+    private javax.swing.JTextField TxtNome;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
     private javax.swing.JTable tabela;
     // End of variables declaration//GEN-END:variables
 
@@ -209,14 +207,14 @@ public class AdicionarAlterarClientesView extends javax.swing.JDialog {
      * @return the InserirBtn
      */
     public javax.swing.JButton getInserirBtn() {
-        return InserirBtn;
+        return BtnConfirmar;
     }
 
     /**
      * @param InserirBtn the InserirBtn to set
      */
     public void setInserirBtn(javax.swing.JButton InserirBtn) {
-        this.InserirBtn = InserirBtn;
+        this.BtnConfirmar = InserirBtn;
     }
 
     /**
@@ -293,42 +291,42 @@ public class AdicionarAlterarClientesView extends javax.swing.JDialog {
      * @return the jTextField1
      */
     public javax.swing.JTextField getjTextField1() {
-        return jTextField1;
+        return TxtNome;
     }
 
     /**
      * @param jTextField1 the jTextField1 to set
      */
     public void setjTextField1(javax.swing.JTextField jTextField1) {
-        this.jTextField1 = jTextField1;
+        this.TxtNome = jTextField1;
     }
 
     /**
      * @return the jTextField2
      */
     public javax.swing.JTextField getjTextField2() {
-        return jTextField2;
+        return TxtCpf;
     }
 
     /**
      * @param jTextField2 the jTextField2 to set
      */
     public void setjTextField2(javax.swing.JTextField jTextField2) {
-        this.jTextField2 = jTextField2;
+        this.TxtCpf = jTextField2;
     }
 
     /**
      * @return the jTextField3
      */
     public javax.swing.JTextField getjTextField3() {
-        return jTextField3;
+        return TxtId;
     }
 
     /**
      * @param jTextField3 the jTextField3 to set
      */
     public void setjTextField3(javax.swing.JTextField jTextField3) {
-        this.jTextField3 = jTextField3;
+        this.TxtId = jTextField3;
     }
 
     /**
@@ -344,4 +342,19 @@ public class AdicionarAlterarClientesView extends javax.swing.JDialog {
     public void setTabela(javax.swing.JTable tabela) {
         this.tabela = tabela;
     }
+    public javax.swing.JTextField getTxtId() {
+    return TxtId;
+}
+
+public javax.swing.JTextField getTxtNome() {
+    return TxtNome;
+}
+
+public javax.swing.JTextField getTxtCpf() {
+    return TxtCpf;
+}
+
+public javax.swing.JButton getBtnConfirmar() {
+    return BtnConfirmar;
+}
 }

@@ -81,10 +81,13 @@ public class ClienteController {
                 return;
             }
             
-            repository.alterarCliente(id, novoNome, novoCpf);
-            
-            atualizarTabela();
-            dialog.dispose();
+            try {
+                    repository.alterarCliente(id, novoNome, novoCpf);
+                    atualizarTabela();
+                       dialog.dispose();
+                } catch (Exception ex) {
+        JOptionPane.showMessageDialog(dialog, "Erro ao alterar o cliente: " + ex.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
+        }
         });
 
         dialog.setLocationRelativeTo(view);
