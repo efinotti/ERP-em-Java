@@ -31,9 +31,14 @@ public class PedidoModel {
     }
 
     public void adicionarItemPedido(ProdutoModel produto, int quantidade) {
+        // Evita quebrar caso passem um produto nulo por engano
+        if (produto == null) return; 
+
         int novoId = itensPedido.isEmpty() ? 1 : itensPedido.get(itensPedido.size() - 1).getId() + 1;
-        int id_produto = produto.getId();
-        ItemPedidoModel novoItem = new ItemPedidoModel(novoId, this.id, id_produto, quantidade);
+        
+        // CORRIGIDO: Agora passamos o objeto 'produto' inteiro, respeitando o novo construtor
+        ItemPedidoModel novoItem = new ItemPedidoModel(novoId, this.id, produto, quantidade);
+        
         itensPedido.add(novoItem);
         calcularValorTotal();
     }

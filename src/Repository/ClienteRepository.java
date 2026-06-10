@@ -5,89 +5,122 @@ import Util.ArquivoUtil;
 import javax.swing.DefaultListModel;
 
 public class ClienteRepository {
-    
+
     private DefaultListModel<ClienteModel> clientes;
     private final String ARQUIVO = "clientes.csv";
-    
     private final ArquivoUtil arquivoUtil = new ArquivoUtil();
 
     public ClienteRepository() {
-        DefaultListModel<?> listaGenerica = ArquivoUtil.ler(1);
-        
+
+        DefaultListModel<?> listaGenerica =
+                ArquivoUtil.ler(1);
+
         if (listaGenerica != null) {
-            this.clientes = (DefaultListModel<ClienteModel>) listaGenerica;
+            clientes = (DefaultListModel<ClienteModel>) listaGenerica;
         } else {
-            this.clientes = new DefaultListModel<>();
+            clientes = new DefaultListModel<>();
         }
     }
-    
-public void criarCliente(String nome, String cpf) {
-        try {
-            if (verificarClienteExiste(cpf) != null) {
-                System.out.println("CLIENTE EXISTE!");
-                return;
-            }
-        } catch (NullPointerException e) {
-            int id = clientes.isEmpty() ? 1 : clientes.lastElement().getId() + 1;
-            
-            try {
-                ClienteModel novoCliente = new ClienteModel(id, nome, cpf);
-                clientes.addElement(novoCliente);
-                salvarNoArquivo();
-            } catch (Exception ex) {
-                System.err.println("Erro ao criar cliente: " + ex.getMessage());
-            }
+
+    public void criarCliente(String nome, String cpf)
+            throws Exception {
+
+        if (verificarClienteExiste(cpf) != null) {
+            throw new Exception(
+                    "Já existe um cliente cadastrado com este CPF."
+            );
+        }
+
+        int id = clientes.isEmpty()
+                ? 1
+                : clientes.lastElement().getId() + 1;
+
+        ClienteModel cliente =
+                new ClienteModel(id, nome, cpf);
+
+        clientes.addElement(cliente);
+
+        salvarNoArquivo();
+    }
+
+    public void alterarCliente(int id, String novoNome, String novoCpf) throws Exception {
+
+    novoCpf = novoCpf.replaceAll("[^0-9]", "");
+
+    for (int i = 0; i < clientes.size(); i++) {
+
+        ClienteModel cliente = clientes.getElementAt(i);
+
+        if (cliente.getId() == id) {
+
+            cliente.setNome(novoNome);
+            cliente.atualizarCPF(novoCpf);
+
+            clientes.setElementAt(cliente, i);
+
+            salvarNoArquivo();
+
+            return;
         }
     }
-    
-public void alterarCliente(int id, String novoNome, String novoCpf) throws Exception {
-        for (int i = 0; i < clientes.size(); i++) {
-            ClienteModel cliente = clientes.getElementAt(i);
-            if (cliente.getId() == id) {
-                cliente.setNome(novoNome);
-                cliente.atualizarCPF(novoCpf);
-                clientes.setElementAt(cliente, i); 
-                salvarNoArquivo(); 
-                return;
-            }
-        }
-        System.err.println("Erro: Cliente com o ID " + id + " não foi encontrado para alteração.");
-    }
-    
+
+    throw new Exception("Cliente não encontrado.");
+}
+
     public void removerCliente(int id) {
+
         for (int i = 0; i < clientes.size(); i++) {
+
             if (clientes.getElementAt(i).getId() == id) {
+
                 clientes.remove(i);
+
                 salvarNoArquivo();
-                break;
+
+                return;
             }
         }
     }
-    
-    public ClienteModel consultarPorId(int id) {
-        for (int i = 0; i < clientes.getSize(); i++) {
-            ClienteModel cliente = clientes.getElementAt(i);
-            if (cliente.getId() == id) {
+
+    public ClienteModel verificarClienteExiste(
+            String cpf
+    ) {
+
+        for (int i = 0; i < clientes.size(); i++) {
+
+            ClienteModel cliente =
+                    clientes.getElementAt(i);
+
+            if (cliente.getCPF().equals(cpf)) {
                 return cliente;
             }
         }
+
         return null;
     }
-    
-    public ClienteModel verificarClienteExiste(String cpf) throws NullPointerException {
-        for (int i = 0; i < clientes.getSize(); i++){
-            ClienteModel cliente = clientes.getElementAt(i);
-            if (cliente.getCPF().equals(cpf)){
+
+    public ClienteModel consultarPorId(int id) {
+
+        for (int i = 0; i < clientes.size(); i++) {
+
+            ClienteModel cliente =
+                    clientes.getElementAt(i);
+
+            if (cliente.getId() == id) {
                 return cliente;
             }
         }
-        throw new NullPointerException("CPF nao encontrado!");
+
+        return null;
     }
-    
+
     private void salvarNoArquivo() {
-        arquivoUtil.armazenar(ARQUIVO, clientes);
+        arquivoUtil.armazenar(
+                ARQUIVO,
+                clientes
+        );
     }
-    
+
     public DefaultListModel<ClienteModel> getClientes() {
         return clientes;
     }

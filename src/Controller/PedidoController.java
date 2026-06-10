@@ -9,7 +9,7 @@ import Repository.ProdutoRepository;
 import TableModel.ItemPedidoTableModel;
 import TableModel.PedidoTableModel;
 import TableModel.ProdutoTableModel;
-import View.ConfirmarPedidoView;
+import View.AdicionarItemPedidoView;
 import View.DetalhePedidoView;
 import View.PedidoView;
 import java.awt.event.WindowAdapter;
@@ -23,7 +23,7 @@ public class PedidoController {
     private PedidoView view;
     private ItemPedidoRepository itemPedidoRepository;
     private DetalhePedidoView detalhePedidoView;
-    private ConfirmarPedidoView confirmarPedidoView;
+    private AdicionarItemPedidoView adicionarItemPedidoView;
     
     ProdutoRepository produtoRepository;
 
@@ -31,12 +31,9 @@ public class PedidoController {
         this.repository = repository;
         this.view = view;
         this.produtoRepository = produtoRepository;
-        
         this.itemPedidoRepository = new ItemPedidoRepository();
-        
         this.detalhePedidoView = new DetalhePedidoView(view, true);
-        
-        this.confirmarPedidoView = new ConfirmarPedidoView(view, true);
+        this.adicionarItemPedidoView = new AdicionarItemPedidoView(view, true);
         
         ajustarTela();
         setarEventos();
@@ -55,7 +52,7 @@ public class PedidoController {
         
         DefaultListModel<ProdutoModel> produtoList = produtoRepository.getListaProdutos();
         ProdutoTableModel produtoTable = new ProdutoTableModel(produtoList);
-        confirmarPedidoView.getTableProdutos().setModel(produtoTable);
+        adicionarItemPedidoView.getjTable2().setModel(produtoTable);
     }
     
     public void setarEventos() {
@@ -71,47 +68,73 @@ public class PedidoController {
         });
 
         detalhePedidoView.getInserirBtn1().addActionListener(l -> {
-            confirmarPedidoView.setVisible(true);
+            adicionarItemPedidoView.setVisible(true);
         });         
         
-        confirmarPedidoView.getConfirmarBttn().addActionListener(e -> {
-            int linhaSelecionada = confirmarPedidoView.getTableProdutos().getSelectedRow();
+        adicionarItemPedidoView.getInserirBttn().addActionListener(e -> {
+            int linhaSelecionada = adicionarItemPedidoView.getjTable2().getSelectedRow();
             if (linhaSelecionada == -1) {
-                JOptionPane.showMessageDialog(confirmarPedidoView, "Selecione um produto para adicionar!");
+                JOptionPane.showMessageDialog(adicionarItemPedidoView, "Selecione um produto para adicionar!");
                 return;
             }
 
-            String quantidadeTexto = confirmarPedidoView.getjTextField1().getText();
+            String quantidadeTexto = adicionarItemPedidoView.getQuantidadeField().getText();
             int quantidade;
             try {
                 quantidade = Integer.parseInt(quantidadeTexto);
                 if (quantidade <= 0) throw new NumberFormatException();
             } catch (NumberFormatException ex) {
-                JOptionPane.showMessageDialog(confirmarPedidoView, "Quantidade inválida!");
+                JOptionPane.showMessageDialog(adicionarItemPedidoView, "Quantidade inválida!");
                 return;
             }
 
             ProdutoModel produto = produtoRepository.getListaProdutos().getElementAt(linhaSelecionada);
             
             if (quantidade > produto.getQuantidade()) {
-                JOptionPane.showMessageDialog(confirmarPedidoView, "Quantidade maior do que o estoque disponível!");
+                JOptionPane.showMessageDialog(adicionarItemPedidoView, "Quantidade maior do que o estoque disponível!");
                 return;
             }
 
             int idPedidoAtual = repository.getLista().isEmpty() ? 1 : repository.getLista().lastElement().getId() + 1;
             int novoIdItem = itemPedidoRepository.getList().isEmpty() ? 1 : itemPedidoRepository.getList().lastElement().getId() + 1;
 
-            ItemPedidoModel novoItem = new ItemPedidoModel(novoIdItem, idPedidoAtual, produto.getId(), quantidade);
+            ItemPedidoModel novoItem = new ItemPedidoModel(novoIdItem, idPedidoAtual, produto, quantidade);
             itemPedidoRepository.getList().addElement(novoItem);
             
-            produto.setQuantidade(produto.getQuantidade()- quantidade);
+            produto.setQuantidade(produto.getQuantidade() - quantidade);
             
-            confirmarPedidoView.setVisible(false);
+            adicionarItemPedidoView.getQuantidadeField().setText("");
+            adicionarItemPedidoView.setVisible(false);
             JOptionPane.showMessageDialog(detalhePedidoView, "Item adicionado com sucesso!");
         });
 
-        confirmarPedidoView.getCancelarBttn().addActionListener(e -> {
-            confirmarPedidoView.setVisible(false);
+        detalhePedidoView.getRealizarBtn().addActionListener(e -> {
+            if (itemPedidoRepository.getList().isEmpty()) {
+                JOptionPane.showMessageDialog(detalhePedidoView, "Adicione pelo menos um item antes de realizar o pedido!");
+                return;
+            }
+
+            int novoIdPedido = repository.getLista().isEmpty() ? 1 : repository.getLista().lastElement().getId() + 1;
+            PedidoModel novoPedido = new PedidoModel(novoIdPedido, 1, new java.util.Date(), new java.util.Date(), 0.0f);
+            
+            ArrayList<ItemPedidoModel> itensDoPedido = new ArrayList<>();
+            for (int i = 0; i < itemPedidoRepository.getList().size(); i++) {
+                ItemPedidoModel item = itemPedidoRepository.getList().get(i);
+                if (item.getIdPedido() == novoIdPedido) {
+                    itensDoPedido.add(item);
+                }
+            }
+            novoPedido.setItensPedido(itensDoPedido);
+
+            repository.getLista().addElement(novoPedido);
+
+            repository.salvar();            
+            itemPedidoRepository.salvar(); 
+            produtoRepository.salvar();    
+
+            view.getTabela().repaint();
+            detalhePedidoView.setVisible(false);
+            JOptionPane.showMessageDialog(view, "Pedido realizado e salvo com sucesso!");
         });
     }
     
@@ -161,7 +184,7 @@ public class PedidoController {
                         
                         ProdutoModel produto = produtoRepository.consultarPorId(item.getIdProduto());
                         if (produto != null) {
-                            produto.setQuantidade(produto.getQuantidade()+ item.getQuantidade());
+                            produto.setQuantidade(produto.getQuantidade() + item.getQuantidade());
                         }
                     }
                 }

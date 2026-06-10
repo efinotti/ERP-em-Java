@@ -58,19 +58,25 @@ public class ClienteModel {
         this.id = id;
     }
     
-    public void setCPF (String cpf) throws Exception {
+    public void setCPF(String cpf) throws Exception {
+
+    cpf = cpf.replaceAll("[^0-9]", "");
+
+    if (ValidadorUtil.validadorCPF(cpf)) {
+        this.cpf = cpf;
+    } else {
+        throw new Exception("CPF inválido!");
+    }
+}
+
+    public void atualizarCPF(String cpf) throws Exception {
+
+        cpf = cpf.replaceAll("[^0-9]", "");
+
         if (ValidadorUtil.validadorCPF(cpf)) {
             this.cpf = cpf;
         } else {
-            throw new Exception("CPF inválido! Impossivel criar o Cliente");
-        }
-    }
-
-    public void atualizarCPF(String cpf) throws Exception {
-        if (ValidadorUtil.validadorCPF(cpf)) { 
-            this.cpf = cpf;
-        } else {
-            throw new Exception("CPF inválido! Impossível alterar o Cliente");
+            throw new Exception("CPF inválido!");
         }
     }
 

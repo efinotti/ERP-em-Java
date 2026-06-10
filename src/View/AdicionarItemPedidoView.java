@@ -10,6 +10,125 @@ package View;
  * @author enzoo
  */
 public class AdicionarItemPedidoView extends javax.swing.JDialog {
+
+    /**
+     * @return the logger
+     */
+    public static java.util.logging.Logger getLogger() {
+        return logger;
+    }
+
+    /**
+     * @return the Titulo
+     */
+    public javax.swing.JLabel getTitulo() {
+        return Titulo;
+    }
+
+    /**
+     * @return the inserirBttn
+     */
+    public javax.swing.JButton getInserirBttn() {
+        return inserirBttn;
+    }
+
+    /**
+     * @return the jScrollPane1
+     */
+    public javax.swing.JScrollPane getjScrollPane1() {
+        return jScrollPane1;
+    }
+
+    /**
+     * @return the jScrollPane2
+     */
+    public javax.swing.JScrollPane getjScrollPane2() {
+        return jScrollPane2;
+    }
+
+    /**
+     * @return the jTable1
+     */
+    public javax.swing.JTable getjTable1() {
+        return jTable1;
+    }
+
+    /**
+     * @return the jTable2
+     */
+    public javax.swing.JTable getjTable2() {
+        return jTable2;
+    }
+
+    /**
+     * @return the quantidadeField
+     */
+    public javax.swing.JTextField getQuantidadeField() {
+        return quantidadeField;
+    }
+
+    /**
+     * @return the quantidadeLBl
+     */
+    public javax.swing.JLabel getQuantidadeLBl() {
+        return quantidadeLBl;
+    }
+
+    /**
+     * @param Titulo the Titulo to set
+     */
+    public void setTitulo(javax.swing.JLabel Titulo) {
+        this.Titulo = Titulo;
+    }
+
+    /**
+     * @param inserirBttn the inserirBttn to set
+     */
+    public void setInserirBttn(javax.swing.JButton inserirBttn) {
+        this.inserirBttn = inserirBttn;
+    }
+
+    /**
+     * @param jScrollPane1 the jScrollPane1 to set
+     */
+    public void setjScrollPane1(javax.swing.JScrollPane jScrollPane1) {
+        this.jScrollPane1 = jScrollPane1;
+    }
+
+    /**
+     * @param jScrollPane2 the jScrollPane2 to set
+     */
+    public void setjScrollPane2(javax.swing.JScrollPane jScrollPane2) {
+        this.jScrollPane2 = jScrollPane2;
+    }
+
+    /**
+     * @param jTable1 the jTable1 to set
+     */
+    public void setjTable1(javax.swing.JTable jTable1) {
+        this.jTable1 = jTable1;
+    }
+
+    /**
+     * @param jTable2 the jTable2 to set
+     */
+    public void setjTable2(javax.swing.JTable jTable2) {
+        this.jTable2 = jTable2;
+    }
+
+    /**
+     * @param quantidadeField the quantidadeField to set
+     */
+    public void setQuantidadeField(javax.swing.JTextField quantidadeField) {
+        this.quantidadeField = quantidadeField;
+    }
+
+    /**
+     * @param quantidadeLBl the quantidadeLBl to set
+     */
+    public void setQuantidadeLBl(javax.swing.JLabel quantidadeLBl) {
+        this.quantidadeLBl = quantidadeLBl;
+    }
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(AdicionarItemPedidoView.class.getName());
 
@@ -145,7 +264,7 @@ public class AdicionarItemPedidoView extends javax.swing.JDialog {
                 }
             }
         } catch (ReflectiveOperationException | javax.swing.UnsupportedLookAndFeelException ex) {
-            logger.log(java.util.logging.Level.SEVERE, null, ex);
+            getLogger().log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 

@@ -1,7 +1,34 @@
 package Model;
 
-
 public class ItemPedidoModel {
+
+    private PedidoModel pedido;
+    private int id_pedido;
+    private int id;
+    private ProdutoModel produto;
+    private int id_produto;
+    private int quantidade;
+    private float preco_uni;
+    private float preco_total;
+
+    public ItemPedidoModel(int id, int id_pedido, ProdutoModel produto, int quantidade) {
+        this.id = id;
+        this.id_pedido = id_pedido;
+        this.produto = produto;
+        
+        if (produto != null) {
+            this.id_produto = produto.getId();
+            this.preco_uni = produto.getPreco();
+        }
+        
+        this.quantidade = quantidade;
+        
+        calcularPrecoTotal();
+    }
+
+    private void calcularPrecoTotal() {
+        this.preco_total = this.preco_uni * this.quantidade;
+    }
 
     public PedidoModel getPedido() {
         return pedido;
@@ -9,6 +36,9 @@ public class ItemPedidoModel {
 
     public void setPedido(PedidoModel pedido) {
         this.pedido = pedido;
+        if (pedido != null) {
+            this.id_pedido = pedido.getId();
+        }
     }
 
     public int getIdPedido() {
@@ -25,6 +55,11 @@ public class ItemPedidoModel {
 
     public void setProduto(ProdutoModel produto) {
         this.produto = produto;
+        if (produto != null) {
+            this.id_produto = produto.getId();
+            this.preco_uni = produto.getPreco();
+            calcularPrecoTotal();
+        }
     }
 
     public int getIdProduto() {
@@ -39,12 +74,18 @@ public class ItemPedidoModel {
         return quantidade;
     }
 
+    public void setQuantidade(int quantidade) {
+        this.quantidade = quantidade;
+        calcularPrecoTotal(); // Recalcula se a quantidade mudar
+    }
+
     public float getPreco_uni() {
         return preco_uni;
     }
 
     public void setPreco_uni(float preco_uni) {
         this.preco_uni = preco_uni;
+        calcularPrecoTotal();
     }
 
     public float getPreco_total() {
@@ -55,35 +96,10 @@ public class ItemPedidoModel {
         this.preco_total = preco_total;
     }
     
-
-    private PedidoModel pedido;
-    private int id_pedido;
-    private int id;
-    private ProdutoModel produto;
-    private int id_produto;
-    private int quantidade;
-    private float preco_uni;
-    private float preco_total;
-
-    public ItemPedidoModel(int id, int id_pedido, int id_produto, int quantidade) {
-        this.pedido = pedido;
-        this.produto = produto;
-        this.id = id;
-        this.quantidade = quantidade;
-        try{
-            setPrecoUni(produto.getPreco());
-            setPrecoTotal(preco_total);
-        } catch (ArithmeticException e) {
-            System.out.println(e);
-        }
-        
-    }
-    
     public int getId() {
         return this.id;
     }
         
-    
     public void setId(int id) {
         this.id = id;
     }
@@ -91,33 +107,9 @@ public class ItemPedidoModel {
     public float getPrecoTotal(){
         return getPreco_total();
     }
-
-    public void setQuantidade(int quantidade) {
-        this.quantidade = quantidade;
-    }
-    
-    public void setPrecoUni(float preco_uni) throws ArithmeticException{
-        if (getPreco_total() <= 0) {
-            throw new ArithmeticException("Preço menor ou igual a zero");
-        }
-        this.setPreco_uni(preco_uni);
-    }
-    
-    public void setPrecoTotal(float preco_total) throws ArithmeticException{
-        
-        if (getQuantidade() <= 0) {
-            this.setPreco_total(this.getPreco_uni() * getQuantidade());
-        } else {
-            throw new ArithmeticException("Quantidade deve ser igual ou maior que um");
-        }
-        
-    }
     
     @Override
     public String toString() {
-        
         return String.format("%d;%d;%d;%d", getId(), getIdPedido(), getIdProduto(), getQuantidade()); 
     }
-    
-    
 }

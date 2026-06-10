@@ -9,6 +9,31 @@ package View;
  * @author DanielSobrinhoMendes
  */
 public class AdicionarAlterarClientesView extends javax.swing.JDialog {
+
+    /**
+     * @param BtnConfirmar the BtnConfirmar to set
+     */
+    public void setBtnConfirmar(javax.swing.JButton BtnConfirmar) {
+        this.BtnConfirmar = BtnConfirmar;
+    }
+
+    /**
+     * @param TxtCpf the TxtCpf to set
+     */
+    public void setTxtCpf(javax.swing.JTextField TxtCpf) {
+        this.TxtCpf = TxtCpf;
+    }
+
+    /**
+     * @param TxtId the TxtId to set
+     */
+
+    /**
+     * @param TxtNome the TxtNome to set
+     */
+    public void setTxtNome(javax.swing.JTextField TxtNome) {
+        this.TxtNome = TxtNome;
+    }
     
     private static java.util.logging.Logger logger = java.util.logging.Logger.getLogger(AdicionarAlterarClientesView.class.getName());
 
@@ -32,12 +57,8 @@ public class AdicionarAlterarClientesView extends javax.swing.JDialog {
         jLabel2 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         BtnConfirmar = new javax.swing.JButton();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        tabela = new javax.swing.JTable();
         TxtNome = new javax.swing.JTextField();
         TxtCpf = new javax.swing.JTextField();
-        TxtId = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -53,30 +74,7 @@ public class AdicionarAlterarClientesView extends javax.swing.JDialog {
         BtnConfirmar.setText("Confirmar Cliente");
         BtnConfirmar.addActionListener(this::BtnConfirmarActionPerformed);
 
-        tabela.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false
-            };
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        jScrollPane2.setViewportView(tabela);
-
         TxtNome.addActionListener(this::TxtNomeActionPerformed);
-
-        jLabel1.setText("ID Cliente");
 
         jLabel3.setText("Nome do Cliente");
 
@@ -85,47 +83,33 @@ public class AdicionarAlterarClientesView extends javax.swing.JDialog {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(43, 43, 43)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(TxtCpf, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel4))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(TxtId, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel1)
-                            .addComponent(jLabel3)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                                .addComponent(TxtNome, javax.swing.GroupLayout.PREFERRED_SIZE, 413, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(BtnConfirmar, javax.swing.GroupLayout.Alignment.TRAILING))
-                        .addContainerGap(44, Short.MAX_VALUE))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(51, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(BtnConfirmar)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(TxtCpf, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel4)
+                        .addComponent(jLabel3)
+                        .addComponent(TxtNome, javax.swing.GroupLayout.PREFERRED_SIZE, 413, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(36, 36, 36))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(25, 25, 25)
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(32, 32, 32)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel1)
-                .addGap(2, 2, 2)
-                .addComponent(TxtId, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
                 .addComponent(jLabel4)
                 .addGap(2, 2, 2)
                 .addComponent(TxtCpf, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
                 .addComponent(jLabel3)
                 .addGap(2, 2, 2)
                 .addComponent(TxtNome, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 84, Short.MAX_VALUE)
+                .addGap(10, 10, 10)
                 .addComponent(BtnConfirmar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(14, 14, 14))
+                .addGap(27, 27, 27))
         );
 
         pack();
@@ -179,14 +163,10 @@ public class AdicionarAlterarClientesView extends javax.swing.JDialog {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtnConfirmar;
     private javax.swing.JTextField TxtCpf;
-    private javax.swing.JTextField TxtId;
     private javax.swing.JTextField TxtNome;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable tabela;
     // End of variables declaration//GEN-END:variables
 
     /**
@@ -207,29 +187,17 @@ public class AdicionarAlterarClientesView extends javax.swing.JDialog {
      * @return the InserirBtn
      */
     public javax.swing.JButton getInserirBtn() {
-        return BtnConfirmar;
+        return getBtnConfirmar();
     }
 
     /**
      * @param InserirBtn the InserirBtn to set
      */
     public void setInserirBtn(javax.swing.JButton InserirBtn) {
-        this.BtnConfirmar = InserirBtn;
+        this.setBtnConfirmar(InserirBtn);
     }
 
-    /**
-     * @return the jLabel1
-     */
-    public javax.swing.JLabel getjLabel1() {
-        return jLabel1;
-    }
 
-    /**
-     * @param jLabel1 the jLabel1 to set
-     */
-    public void setjLabel1(javax.swing.JLabel jLabel1) {
-        this.jLabel1 = jLabel1;
-    }
 
     /**
      * @return the jLabel2
@@ -274,77 +242,33 @@ public class AdicionarAlterarClientesView extends javax.swing.JDialog {
     }
 
     /**
-     * @return the jScrollPane2
-     */
-    public javax.swing.JScrollPane getjScrollPane2() {
-        return jScrollPane2;
-    }
-
-    /**
-     * @param jScrollPane2 the jScrollPane2 to set
-     */
-    public void setjScrollPane2(javax.swing.JScrollPane jScrollPane2) {
-        this.jScrollPane2 = jScrollPane2;
-    }
-
-    /**
      * @return the jTextField1
      */
     public javax.swing.JTextField getjTextField1() {
-        return TxtNome;
+        return getTxtNome();
     }
 
     /**
      * @param jTextField1 the jTextField1 to set
      */
     public void setjTextField1(javax.swing.JTextField jTextField1) {
-        this.TxtNome = jTextField1;
+        this.setTxtNome(jTextField1);
     }
 
     /**
      * @return the jTextField2
      */
     public javax.swing.JTextField getjTextField2() {
-        return TxtCpf;
+        return getTxtCpf();
     }
 
     /**
      * @param jTextField2 the jTextField2 to set
      */
     public void setjTextField2(javax.swing.JTextField jTextField2) {
-        this.TxtCpf = jTextField2;
+        this.setTxtCpf(jTextField2);
     }
 
-    /**
-     * @return the jTextField3
-     */
-    public javax.swing.JTextField getjTextField3() {
-        return TxtId;
-    }
-
-    /**
-     * @param jTextField3 the jTextField3 to set
-     */
-    public void setjTextField3(javax.swing.JTextField jTextField3) {
-        this.TxtId = jTextField3;
-    }
-
-    /**
-     * @return the tabela
-     */
-    public javax.swing.JTable getTabela() {
-        return tabela;
-    }
-
-    /**
-     * @param tabela the tabela to set
-     */
-    public void setTabela(javax.swing.JTable tabela) {
-        this.tabela = tabela;
-    }
-    public javax.swing.JTextField getTxtId() {
-    return TxtId;
-}
 
 public javax.swing.JTextField getTxtNome() {
     return TxtNome;
