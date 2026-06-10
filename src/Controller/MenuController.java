@@ -27,7 +27,7 @@ public class MenuController {
         ClienteView clienteView = new ClienteView();
         ClienteRepository clienteRepo = new ClienteRepository();
         
-        new ClienteController();
+        new ClienteController(clienteView, clienteRepo);
         
         clienteView.setVisible(true);
     }
@@ -45,7 +45,7 @@ public class MenuController {
         ProdutoView produtoView = new ProdutoView();
         ProdutoRepository produtoRepo = new ProdutoRepository();
         
-        new ProdutoController();
+        new ProdutoController(produtoRepo, produtoView);
         produtoView.setVisible(true);
     }
 }
