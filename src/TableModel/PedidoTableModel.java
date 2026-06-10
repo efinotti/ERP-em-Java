@@ -45,7 +45,19 @@ public class PedidoTableModel extends AbstractTableModel {
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
         PedidoModel pedido = listModel.getElementAt(rowIndex);
-        
-        return pedido.getId();
+        switch (columnIndex) {
+            case 0:
+                return pedido.getId();
+            case 1:
+                return pedido.getId_cliente();
+            case 2:
+                return pedido.getDt_pedido() != null ? sdf.format(pedido.getDt_pedido()) : ""; 
+            case 3:
+                return pedido.getDt_entrega() != null ? sdf.format(pedido.getDt_entrega()) : ""; 
+            case 4:
+                return String.format("R$ %.2f", pedido.getVlr_total()); 
+            default:
+                return null;
+        }
     }
 }

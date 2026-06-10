@@ -18,7 +18,10 @@ public class PedidoModel {
             this.id_cliente = cliente.getId();
         }
         this.dt_pedido = new Date();
-        this.dt_entrega = new Date();
+        java.util.Calendar cal = java.util.Calendar.getInstance();
+        cal.setTime(this.dt_pedido);
+        cal.add(java.util.Calendar.DAY_OF_MONTH,7);
+        this.dt_entrega = cal.getTime();
         this.vlr_total = 0.0f;
     }
 
@@ -31,12 +34,8 @@ public class PedidoModel {
     }
 
     public void adicionarItemPedido(ProdutoModel produto, int quantidade) {
-        // Evita quebrar caso passem um produto nulo por engano
         if (produto == null) return; 
-
         int novoId = itensPedido.isEmpty() ? 1 : itensPedido.get(itensPedido.size() - 1).getId() + 1;
-        
-        // CORRIGIDO: Agora passamos o objeto 'produto' inteiro, respeitando o novo construtor
         ItemPedidoModel novoItem = new ItemPedidoModel(novoId, this.id, produto, quantidade);
         
         itensPedido.add(novoItem);

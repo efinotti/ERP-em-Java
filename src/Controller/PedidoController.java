@@ -115,24 +115,34 @@ public class PedidoController {
             }
 
             int novoIdPedido = repository.getLista().isEmpty() ? 1 : repository.getLista().lastElement().getId() + 1;
-            PedidoModel novoPedido = new PedidoModel(novoIdPedido, 1, new java.util.Date(), new java.util.Date(), 0.0f);
             
             ArrayList<ItemPedidoModel> itensDoPedido = new ArrayList<>();
+            float valorTotalCalculado = 0.0f;
+            
             for (int i = 0; i < itemPedidoRepository.getList().size(); i++) {
                 ItemPedidoModel item = itemPedidoRepository.getList().get(i);
                 if (item.getIdPedido() == novoIdPedido) {
                     itensDoPedido.add(item);
+                    valorTotalCalculado += item.getPrecoTotal();
                 }
             }
+            
+            java.util.Date dataPedido = new java.util.Date();
+            java.util.Calendar cal = java.util.Calendar.getInstance();
+            cal.setTime(dataPedido);
+            cal.add(java.util.Calendar.DAY_OF_MONTH, 7);
+            java.util.Date dataEntrega = cal.getTime();
+
+            PedidoModel novoPedido = new PedidoModel(novoIdPedido, 1, dataPedido, dataEntrega, valorTotalCalculado);
             novoPedido.setItensPedido(itensDoPedido);
 
             repository.getLista().addElement(novoPedido);
-
             repository.salvar();            
             itemPedidoRepository.salvar(); 
             produtoRepository.salvar();    
 
-            view.getTabela().repaint();
+            ajustarTela(); 
+            
             detalhePedidoView.setVisible(false);
             JOptionPane.showMessageDialog(view, "Pedido realizado e salvo com sucesso!");
         });
