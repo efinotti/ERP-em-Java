@@ -21,7 +21,7 @@ public class ClienteRepository {
         }
     }
     
-    public void criarCliente(String nome, String cpf) {
+public void criarCliente(String nome, String cpf) {
         try {
             if (verificarClienteExiste(cpf) != null) {
                 System.out.println("CLIENTE EXISTE!");
@@ -30,19 +30,22 @@ public class ClienteRepository {
         } catch (NullPointerException e) {
             int id = clientes.isEmpty() ? 1 : clientes.lastElement().getId() + 1;
             
-            ClienteModel novoCliente = new ClienteModel(id, nome, cpf);
-            clientes.addElement(novoCliente);
-            salvarNoArquivo();
+            try {
+                ClienteModel novoCliente = new ClienteModel(id, nome, cpf);
+                clientes.addElement(novoCliente);
+                salvarNoArquivo();
+            } catch (Exception ex) {
+                System.err.println("Erro ao criar cliente: " + ex.getMessage());
+            }
         }
     }
     
-    public void alterarCliente(int id, String novoNome, String novoCpf) {
+public void alterarCliente(int id, String novoNome, String novoCpf) throws Exception {
         for (int i = 0; i < clientes.size(); i++) {
             ClienteModel cliente = clientes.getElementAt(i);
             if (cliente.getId() == id) {
                 cliente.setNome(novoNome);
                 cliente.atualizarCPF(novoCpf);
-                
                 clientes.setElementAt(cliente, i); 
                 salvarNoArquivo(); 
                 return;
