@@ -10,7 +10,7 @@ package View;
  */
 public class AdicionarAlterarClientesView extends javax.swing.JDialog {
     
-    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(AdicionarAlterarClientesView.class.getName());
+    private static java.util.logging.Logger logger = java.util.logging.Logger.getLogger(AdicionarAlterarClientesView.class.getName());
 
     /**
      * Creates new form AdicionarAlterarClientesView
@@ -158,7 +158,7 @@ public class AdicionarAlterarClientesView extends javax.swing.JDialog {
                 }
             }
         } catch (ReflectiveOperationException | javax.swing.UnsupportedLookAndFeelException ex) {
-            logger.log(java.util.logging.Level.SEVERE, null, ex);
+            getLogger().log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
@@ -190,4 +190,158 @@ public class AdicionarAlterarClientesView extends javax.swing.JDialog {
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTable tabela;
     // End of variables declaration//GEN-END:variables
+
+    /**
+     * @return the logger
+     */
+    public static java.util.logging.Logger getLogger() {
+        return logger;
+    }
+
+    /**
+     * @param aLogger the logger to set
+     */
+    public static void setLogger(java.util.logging.Logger aLogger) {
+        logger = aLogger;
+    }
+
+    /**
+     * @return the InserirBtn
+     */
+    public javax.swing.JButton getInserirBtn() {
+        return InserirBtn;
+    }
+
+    /**
+     * @param InserirBtn the InserirBtn to set
+     */
+    public void setInserirBtn(javax.swing.JButton InserirBtn) {
+        this.InserirBtn = InserirBtn;
+    }
+
+    /**
+     * @return the jLabel1
+     */
+    public javax.swing.JLabel getjLabel1() {
+        return jLabel1;
+    }
+
+    /**
+     * @param jLabel1 the jLabel1 to set
+     */
+    public void setjLabel1(javax.swing.JLabel jLabel1) {
+        this.jLabel1 = jLabel1;
+    }
+
+    /**
+     * @return the jLabel2
+     */
+    public javax.swing.JLabel getjLabel2() {
+        return jLabel2;
+    }
+
+    /**
+     * @param jLabel2 the jLabel2 to set
+     */
+    public void setjLabel2(javax.swing.JLabel jLabel2) {
+        this.jLabel2 = jLabel2;
+    }
+
+    /**
+     * @return the jLabel3
+     */
+    public javax.swing.JLabel getjLabel3() {
+        return jLabel3;
+    }
+
+    /**
+     * @param jLabel3 the jLabel3 to set
+     */
+    public void setjLabel3(javax.swing.JLabel jLabel3) {
+        this.jLabel3 = jLabel3;
+    }
+
+    /**
+     * @return the jLabel4
+     */
+    public javax.swing.JLabel getjLabel4() {
+        return jLabel4;
+    }
+
+    /**
+     * @param jLabel4 the jLabel4 to set
+     */
+    public void setjLabel4(javax.swing.JLabel jLabel4) {
+        this.jLabel4 = jLabel4;
+    }
+
+    /**
+     * @return the jScrollPane2
+     */
+    public javax.swing.JScrollPane getjScrollPane2() {
+        return jScrollPane2;
+    }
+
+    /**
+     * @param jScrollPane2 the jScrollPane2 to set
+     */
+    public void setjScrollPane2(javax.swing.JScrollPane jScrollPane2) {
+        this.jScrollPane2 = jScrollPane2;
+    }
+
+    /**
+     * @return the jTextField1
+     */
+    public javax.swing.JTextField getjTextField1() {
+        return jTextField1;
+    }
+
+    /**
+     * @param jTextField1 the jTextField1 to set
+     */
+    public void setjTextField1(javax.swing.JTextField jTextField1) {
+        this.jTextField1 = jTextField1;
+    }
+
+    /**
+     * @return the jTextField2
+     */
+    public javax.swing.JTextField getjTextField2() {
+        return jTextField2;
+    }
+
+    /**
+     * @param jTextField2 the jTextField2 to set
+     */
+    public void setjTextField2(javax.swing.JTextField jTextField2) {
+        this.jTextField2 = jTextField2;
+    }
+
+    /**
+     * @return the jTextField3
+     */
+    public javax.swing.JTextField getjTextField3() {
+        return jTextField3;
+    }
+
+    /**
+     * @param jTextField3 the jTextField3 to set
+     */
+    public void setjTextField3(javax.swing.JTextField jTextField3) {
+        this.jTextField3 = jTextField3;
+    }
+
+    /**
+     * @return the tabela
+     */
+    public javax.swing.JTable getTabela() {
+        return tabela;
+    }
+
+    /**
+     * @param tabela the tabela to set
+     */
+    public void setTabela(javax.swing.JTable tabela) {
+        this.tabela = tabela;
+    }
 }
