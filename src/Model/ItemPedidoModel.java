@@ -76,7 +76,7 @@ public class ItemPedidoModel {
 
     public void setQuantidade(int quantidade) {
         this.quantidade = quantidade;
-        calcularPrecoTotal(); // Recalcula se a quantidade mudar
+        calcularPrecoTotal();
     }
 
     public float getPreco_uni() {

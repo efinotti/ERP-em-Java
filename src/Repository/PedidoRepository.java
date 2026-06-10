@@ -32,7 +32,8 @@ public class PedidoRepository {
 
     public void listar() {
         if (listaPedidos.getSize() <= 0) {
-            System.out.println("Lista pedido está vazia");
+            System.out.println("Lista de pedidos está vazia");
+            return;
         }
         for (int i = 0; i < listaPedidos.getSize(); i++) {
             System.out.println(listaPedidos.get(i).toString() + "\n");

@@ -11,7 +11,6 @@ public class ProdutoRepository {
 
     @SuppressWarnings("unchecked")
     public ProdutoRepository() {
-        // Identificador '2' mapeia a leitura de produtos em ArquivoUtil
         Object listaGenerica = ArquivoUtil.ler(2);
         
         if (listaGenerica != null) {

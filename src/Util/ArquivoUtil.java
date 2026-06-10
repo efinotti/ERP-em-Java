@@ -11,39 +11,34 @@ import javax.swing.DefaultListModel;
  
 public class ArquivoUtil {
     
-    // SÓ SERÁ CHAMADO NA HORA QUE O SISTEMA FECHAR
     public static void armazenar(String nomeArquivo, DefaultListModel<?> listModel) {
         File file = new File(nomeArquivo);
+        
         try {
-            if (file.createNewFile()){
-                System.out.println("Arquivo criado");
-            } else {
-                System.out.println("Arquivo " + nomeArquivo + " ja existe");
+            if (file.createNewFile()) {
+                System.out.println("Arquivo criado: " + nomeArquivo);
             }
             
-            FileWriter fw = new FileWriter(file);
-            
-            for (int i = 0; i < listModel.size(); i++) {
-                fw.write(listModel.elementAt(i).toString() + "\n");
+            // O try-with-resources fecha o FileWriter automaticamente
+            try (FileWriter fw = new FileWriter(file)) {
+                for (int i = 0; i < listModel.size(); i++) {
+                    fw.write(listModel.elementAt(i).toString() + "\n");
+                }
             }
-            
-            fw.close();
             
         } catch (IOException e) {
-            System.err.println(e);
+            System.err.println("Erro ao armazenar arquivo: " + e.getMessage());
         }
     }
         
-    // 1 - Cliente | 2 - Produto | 3 - ItemPedido | 4 - Pedido
     @SuppressWarnings("unchecked")
     public static DefaultListModel<?> ler(int identificador) {
-        switch(identificador){
+        switch(identificador) {
             case 1 -> {
                 File file = new File("clientes.csv");
-                if (file.exists()){
+                if (file.exists()) {
                     DefaultListModel<ClienteModel> listaClientes = new DefaultListModel<>();
-                    try {
-                        Scanner scan = new Scanner(file);
+                    try (Scanner scan = new Scanner(file)) {
                         while (scan.hasNextLine()) {
                             String data = scan.nextLine();
                             if (data.trim().isEmpty()) continue; 
@@ -56,14 +51,12 @@ public class ArquivoUtil {
                             ClienteModel cliente = new ClienteModel(id, nome, cpf);
                             listaClientes.addElement(cliente);
                         }
-                        scan.close();
                         return listaClientes;
                     } catch (IOException e) {
-                        System.out.println("Erro na Criação do FileReader" + e);
+                        System.out.println("Erro na Leitura de Clientes: " + e.getMessage());
                     }
-                } else {
-                    return null;
                 }
+                return null;
             }
             case 2 -> {
                 File file = new File("produtos.csv");
@@ -88,23 +81,19 @@ public class ArquivoUtil {
                         }
                         return listaProdutos;
                     } catch (Exception e) {
-                        System.out.println("Erro na Leitura do Arquivo de Produtos: " + e.getMessage());
+                        System.out.println("Erro na Leitura de Produtos: " + e.getMessage());
                     }
                 }
                 return listaProdutos;
             }
             case 3 -> {
-                // CORRIGIDO: Removido o ".csv.csv" duplicado
                 File file = new File("itemPedidos.csv");
                 
-                if (file.exists()){
+                if (file.exists()) {
                     DefaultListModel<ItemPedidoModel> listaItemPedidos = new DefaultListModel<>();
-                    
-                    // Recupera a lista de produtos atualizada em memória para buscar as referências dos objetos
                     DefaultListModel<ProdutoModel> produtosCadastrados = (DefaultListModel<ProdutoModel>) ler(2);
                             
-                    try {
-                        Scanner scan = new Scanner(file);
+                    try (Scanner scan = new Scanner(file)) {
                         while (scan.hasNextLine()) {
                             String data = scan.nextLine();
                             if (data.trim().isEmpty()) continue;
@@ -115,7 +104,6 @@ public class ArquivoUtil {
                             int idProduto = Integer.parseInt(textoSeparado[2]);
                             int quantidade = Integer.parseInt(textoSeparado[3]);
                             
-                            // Encontra a instância real do ProdutoModel pelo ID salvo para evitar NullPointerException
                             ProdutoModel produtoInstancia = null;
                             if (produtosCadastrados != null) {
                                 for (int i = 0; i < produtosCadastrados.size(); i++) {
@@ -126,23 +114,19 @@ public class ArquivoUtil {
                                 }
                             }
                             
-                            // Fallback de segurança: se o produto foi excluído do CSV, recria um objeto mock com os dados básicos
                             if (produtoInstancia == null) {
                                 produtoInstancia = new ProdutoModel(idProduto, "Produto Não Localizado", 0.0f, 0);
                             }
                             
-                            // CORRIGIDO: Agora passa o objeto do produto em vez de um inteiro primitivo
                             ItemPedidoModel itemPedido = new ItemPedidoModel(id, idPedido, produtoInstancia, quantidade);
                             listaItemPedidos.addElement(itemPedido);
                         }
-                        scan.close();
                         return listaItemPedidos;
                     } catch (IOException e) {
-                        System.out.println("Erro na Criação do FileReader" + e);
+                        System.out.println("Erro na Leitura de Itens de Pedido: " + e.getMessage());
                     }
-                } else {
-                    return null;
                 }
+                return null;
             }
             case 4 -> {
                 File file = new File("pedidos.csv");
@@ -150,8 +134,7 @@ public class ArquivoUtil {
                     DefaultListModel<PedidoModel> listaPedidos = new DefaultListModel<>();
                     SimpleDateFormat formatador = new SimpleDateFormat("yyyy-MM-dd");
 
-                    try {
-                        Scanner scan = new Scanner(file);
+                    try (Scanner scan = new Scanner(file)) {
                         while (scan.hasNextLine()) {
                             String data = scan.nextLine();
                             if (data.trim().isEmpty()) continue; 
@@ -166,16 +149,14 @@ public class ArquivoUtil {
                             PedidoModel pedido = new PedidoModel(id, id_cliente, dt_pedido, dt_entrega, vlr_total);
                             listaPedidos.addElement(pedido);
                         }
-                        scan.close();
                         return listaPedidos;
                     } catch (IOException e) {
-                        System.out.println("Erro na Leitura do Arquivo: " + e);
+                        System.out.println("Erro na Leitura de Pedidos: " + e.getMessage());
                     } catch (java.text.ParseException e) {
                         System.out.println("Erro ao converter a data do arquivo (formato esperado yyyy-MM-dd): " + e.getMessage());
                     }
-                } else {
-                    return null;
                 }
+                return null;
             }
         }
         return null;

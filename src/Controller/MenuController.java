@@ -23,7 +23,7 @@ public class MenuController {
         this.view.getGerirProdutosBtn().addActionListener(e -> abrirModuloProdutos());
     }
 
-private void abrirModuloClientes() {
+    private void abrirModuloClientes() {
         ClienteView clienteView = new ClienteView();
         ClienteRepository clienteRepo = new ClienteRepository();
         new ClienteController(clienteView, clienteRepo); 
@@ -35,8 +35,9 @@ private void abrirModuloClientes() {
         PedidoView pedidoView = new PedidoView();
         PedidoRepository pedidoRepo = new PedidoRepository();
         ProdutoRepository produtoRepo = new ProdutoRepository();
+        ClienteRepository clienteRepo = new ClienteRepository();
         
-        new PedidoController(pedidoRepo, pedidoView, produtoRepo);
+        new PedidoController(pedidoRepo, pedidoView, produtoRepo, clienteRepo);
         pedidoView.setVisible(true);
     }
 
