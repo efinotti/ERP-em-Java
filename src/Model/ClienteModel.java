@@ -66,11 +66,11 @@ public class ClienteModel {
         }
     }
 
-    public void atualizarCPF(String cpf) {
-        if (ValidadorUtil.validadorCPF(cpf)) {
+    public void atualizarCPF(String cpf) throws Exception {
+        if (ValidadorUtil.validadorCPF(cpf)) { 
             this.cpf = cpf;
         } else {
-            System.err.println("Aviso: Falha ao alterar. CPF " + cpf + " é inválido!");
+            throw new Exception("CPF inválido! Impossível alterar o Cliente");
         }
     }
 
