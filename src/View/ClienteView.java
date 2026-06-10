@@ -10,7 +10,7 @@ package View;
  */
 public class ClienteView extends javax.swing.JFrame {
     
-    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(ClienteView.class.getName());
+    private static java.util.logging.Logger logger = java.util.logging.Logger.getLogger(ClienteView.class.getName());
 
     /**
      * Creates new form ClienteView
@@ -130,7 +130,7 @@ public class ClienteView extends javax.swing.JFrame {
                 }
             }
         } catch (ReflectiveOperationException | javax.swing.UnsupportedLookAndFeelException ex) {
-            logger.log(java.util.logging.Level.SEVERE, null, ex);
+            getLogger().log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
@@ -146,4 +146,102 @@ public class ClienteView extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable tabela;
     // End of variables declaration//GEN-END:variables
+
+    /**
+     * @return the logger
+     */
+    public static java.util.logging.Logger getLogger() {
+        return logger;
+    }
+
+    /**
+     * @param aLogger the logger to set
+     */
+    public static void setLogger(java.util.logging.Logger aLogger) {
+        logger = aLogger;
+    }
+
+    /**
+     * @return the AlterarBtn
+     */
+    public javax.swing.JButton getAlterarBtn() {
+        return AlterarBtn;
+    }
+
+    /**
+     * @param AlterarBtn the AlterarBtn to set
+     */
+    public void setAlterarBtn(javax.swing.JButton AlterarBtn) {
+        this.AlterarBtn = AlterarBtn;
+    }
+
+    /**
+     * @return the ExcluirBtn
+     */
+    public javax.swing.JButton getExcluirBtn() {
+        return ExcluirBtn;
+    }
+
+    /**
+     * @param ExcluirBtn the ExcluirBtn to set
+     */
+    public void setExcluirBtn(javax.swing.JButton ExcluirBtn) {
+        this.ExcluirBtn = ExcluirBtn;
+    }
+
+    /**
+     * @return the InserirBtn
+     */
+    public javax.swing.JButton getInserirBtn() {
+        return InserirBtn;
+    }
+
+    /**
+     * @param InserirBtn the InserirBtn to set
+     */
+    public void setInserirBtn(javax.swing.JButton InserirBtn) {
+        this.InserirBtn = InserirBtn;
+    }
+
+    /**
+     * @return the jLabel2
+     */
+    public javax.swing.JLabel getjLabel2() {
+        return jLabel2;
+    }
+
+    /**
+     * @param jLabel2 the jLabel2 to set
+     */
+    public void setjLabel2(javax.swing.JLabel jLabel2) {
+        this.jLabel2 = jLabel2;
+    }
+
+    /**
+     * @return the jScrollPane2
+     */
+    public javax.swing.JScrollPane getjScrollPane2() {
+        return jScrollPane2;
+    }
+
+    /**
+     * @param jScrollPane2 the jScrollPane2 to set
+     */
+    public void setjScrollPane2(javax.swing.JScrollPane jScrollPane2) {
+        this.jScrollPane2 = jScrollPane2;
+    }
+
+    /**
+     * @return the tabela
+     */
+    public javax.swing.JTable getTabela() {
+        return tabela;
+    }
+
+    /**
+     * @param tabela the tabela to set
+     */
+    public void setTabela(javax.swing.JTable tabela) {
+        this.tabela = tabela;
+    }
 }
