@@ -138,6 +138,7 @@ public class AdicionarItemPedidoView extends javax.swing.JDialog {
     public AdicionarItemPedidoView(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        this.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
     }
 
     /**

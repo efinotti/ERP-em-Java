@@ -41,14 +41,16 @@ public class PedidoController {
         this.view.setVisible(true);
     }
     
-    public void ajustarTela() {
+public void ajustarTela() {
         DefaultListModel<?> originalRepository = repository.getLista(); 
         PedidoTableModel dataModel = new PedidoTableModel(originalRepository);
         view.getTabela().setModel(dataModel);
         
         DefaultListModel<ItemPedidoModel> itemPedidoList = itemPedidoRepository.getList();
         ItemPedidoTableModel itemTable = new ItemPedidoTableModel(itemPedidoList);
+        
         detalhePedidoView.getjTable1().setModel(itemTable);
+        detalhePedidoView.getjTable1().createDefaultColumnsFromModel();
         
         DefaultListModel<ProdutoModel> produtoList = produtoRepository.getListaProdutos();
         ProdutoTableModel produtoTable = new ProdutoTableModel(produtoList);

@@ -87,6 +87,7 @@ public class PedidoView extends javax.swing.JFrame {
 
     public PedidoView() {
         initComponents();
+        this.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
     }
 
     /**

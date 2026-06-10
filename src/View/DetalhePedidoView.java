@@ -158,6 +158,7 @@ public class DetalhePedidoView extends javax.swing.JDialog {
     public DetalhePedidoView(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        this.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
     }
 
     /**
@@ -188,7 +189,7 @@ public class DetalhePedidoView extends javax.swing.JDialog {
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 26)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("Gerenciamento de Pedidos");
+        jLabel2.setText("Detalhe de Pedidos");
 
         jLabel1.setText("CPF do Cliente");
 
@@ -202,25 +203,6 @@ public class DetalhePedidoView extends javax.swing.JDialog {
         RealizarBtn.setText("Realizar");
         RealizarBtn.addActionListener(this::RealizarBtnActionPerformed);
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "ID", "Nome", "Quantidade", "Valor Total"
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false
-            };
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
         jTable1.setOpaque(false);
         jTable1.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         jTable1.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);

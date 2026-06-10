@@ -43,6 +43,7 @@ public class AdicionarAlterarClientesView extends javax.swing.JDialog {
     public AdicionarAlterarClientesView(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        this.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
     }
 
     /**

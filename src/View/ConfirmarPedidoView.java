@@ -109,6 +109,7 @@ public class ConfirmarPedidoView extends javax.swing.JDialog {
     public ConfirmarPedidoView(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        this.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
     }
 
     /**

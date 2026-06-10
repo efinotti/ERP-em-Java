@@ -39,10 +39,10 @@ public class ItemPedidoTableModel extends AbstractTableModel {
         ItemPedidoModel item = listModel.getElementAt(rowIndex);
         
         return switch (columnIndex) {
-            case 0 -> item.getId();
-            case 1 -> item.getIdPedido();
-            case 2 -> item.getIdProduto();
-            case 3 -> item.getQuantidade();
+            case 0 -> item.getId(); // Coluna 0: ID do item
+            case 1 -> item.getProduto() != null ? item.getProduto().getNome() : "Produto ID: " + item.getIdProduto(); // Coluna 1: Nome do Produto (Ype, Vassoura)
+            case 2 -> item.getQuantidade(); // Coluna 2: Quantidade do item
+            case 3 -> String.format("R$ %.2f", item.getPrecoTotal()); // Coluna 3: Valor Total da linha (Ex: R$ 20,00)
             default -> null;
         };
     }
